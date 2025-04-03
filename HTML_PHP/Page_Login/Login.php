@@ -96,12 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>MangaHeaven</title>
     <link rel="stylesheet" href="../../Styles.css">
     <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
-    <style>
-        .error-message {
-            color: #dc3545;
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 <body>
     <!-- En-tête de la page -->
