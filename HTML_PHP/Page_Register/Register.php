@@ -131,10 +131,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
     <link rel="stylesheet" href="../../Styles.css">
-    <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../Ressource/Logo/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->
