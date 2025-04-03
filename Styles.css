@@ -370,3 +370,126 @@ footer {
 .btn:hover {
     background-color: #555;
 }
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    /* General Responsive Adjustments */
+    main {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    /* Responsive Navigation */
+    nav ul li {
+        margin: 0 8px;
+        font-size: 0.9em;
+    }
+    
+    /* Responsive Manga Grid */
+    .manga-container {
+        gap: 10px;
+    }
+    
+    .manga-item {
+        width: calc(50% - 10px);
+        height: 250px;
+    }
+    
+    .manga-item h3 {
+        font-size: 1em;
+    }
+    
+    /* Responsive Forms */
+    .login-section, .account-section {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: 10px auto 60px auto;
+    }
+    
+    .login-form input, .update-form input {
+        padding: 8px;
+    }
+    
+    /* Responsive Landing Page */
+    .landing-hero {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+    
+    .hero-content {
+        padding: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+    
+    .hero-content p {
+        font-size: 1em;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero-image {
+        width: 100%;
+    }
+    
+    /* Responsive Features Section */
+    .features {
+        flex-direction: column;
+    }
+    
+    .feature-item {
+        margin-bottom: 15px;
+    }
+    
+    /* Footer Adjustments */
+    footer {
+        position: static;
+        padding: 15px 0;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.3em;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    .manga-item {
+        width: 100%;
+        height: 220px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+    
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    
+    /* Improve form readability on very small screens */
+    label, input, button {
+        font-size: 0.95em;
+    }
+}
