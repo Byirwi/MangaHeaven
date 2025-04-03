@@ -1,0 +1,141 @@
+/* Style global du corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.5s;
+}
+
+/* Style de l'en-tête */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Style de la navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Style principal */
+main {
+    padding: 20px;
+}
+
+/* Style de la liste des mangas */
+.manga-list {
+    margin-bottom: 20px;
+}
+
+/* Style de la barre de recherche */
+#search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Style du conteneur de mangas */
+.manga-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+/* Style des éléments de manga */
+.manga-item {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 250x; /* Assure que chaque élément ne dépasse pas 20% de la largeur du conteneur */
+    height: 300px; /* Taille fixe pour le conteneur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.manga-item img {
+    width: auto;
+    height: 80%; /* Ajuste la hauteur de l'image */
+    max-width: 100%;
+    object-fit: cover; /* Maintient le ratio d'aspect */
+}
+
+.manga-item h3 {
+    font-size: 1.2em;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Style de la section de connexion */
+.login-section {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du formulaire de connexion */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    margin: 10px 0 5px;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #555;
+}
+
+/* Style du pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
