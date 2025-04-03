@@ -104,7 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <nav>
             <ul>
                 <li><a href="../Page_Home/Home.php">Home</a></li>
-                <li><a href="../Page_Login/Login.php">Connexion</a></li>
                 <li><a href="../Page_Register/Register.php">Inscription</a></li>
             </ul>
         </nav>
