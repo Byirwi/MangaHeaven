@@ -1,3 +1,7 @@
+<?php
+// Initialize the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,8 +16,16 @@
         <h1>MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
-                <li><a href="../Page_Login/Login.php">Connexion</a></li>
+                <?php
+                // If user is logged in, show Accueil and Logout links, otherwise show Login and Register
+                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                    echo '<li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>';
+                    echo '<li><a href="../logout.php">Déconnexion</a></li>';
+                } else {
+                    echo '<li><a href="../Page_Login/Login.php">Connexion</a></li>';
+                    echo '<li><a href="../Page_Register/Register.php">Inscription</a></li>';
+                }
+                ?>
             </ul>
         </nav>
     </header>
@@ -25,8 +37,15 @@
                 <h2>Plongez dans l'univers des mangas</h2>
                 <p>Découvrez, lisez et suivez vos mangas préférés en ligne.</p>
                 <div class="cta-buttons">
-                    <a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>
-                    <a href="../Page_Login/Login.php" class="cta-button secondary">Se connecter</a>
+                    <?php
+                    // If user is logged in, direct to accueil, otherwise to login/register
+                    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        echo '<a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>';
+                    } else {
+                        echo '<a href="../Page_Login/Login.php" class="cta-button primary">Explorer les mangas</a>';
+                        echo '<a href="../Page_Register/Register.php" class="cta-button secondary">S\'inscrire</a>';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="hero-image">

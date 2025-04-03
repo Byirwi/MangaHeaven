@@ -1,3 +1,14 @@
+<?php
+// Initialize the session
+session_start();
+
+// Check if the user is logged in, if not then redirect to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: ../Page_Login/Login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,12 +21,13 @@
 <body>
     <!-- En-tête de la page -->
     <header>
-        <h1>Bienvenue sur MangaHeaven</h1>
+        <h1>Bienvenue sur MangaHeaven, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1>
         <nav>
             <ul>
                 <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
                 <!-- <li><a href="ListeMangas.php">Liste des Mangas</a></li> -->
-                <li><a href="../Page_Login/Login.php">Connexion</a></li>
+                <li><a href="../Page_Garde/Garde.php">Page d'accueil</a></li>
+                <li><a href="../logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
