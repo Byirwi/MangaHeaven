@@ -147,7 +147,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h1>Inscription à MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="../Page_Garde/Garde.php">Accueil</a></li>
+                <li><a href="../Page_Home/Home.php">Home</a></li>
                 <li><a href="../Page_Login/Login.php">Connexion</a></li>
             </ul>
         </nav>

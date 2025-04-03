@@ -186,36 +186,94 @@ $conn->close();
     <link href="../../Styles.css" rel="stylesheet">
     <style>
         .account-section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto 80px auto; /* Added bottom margin to avoid footer overlap */
+            padding: 25px;
             background-color: white;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .update-form {
             margin-bottom: 30px;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             border-bottom: 1px solid #eee;
         }
         
         .update-form h3 {
             margin-top: 0;
             color: #333;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .update-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .update-form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        
+        .update-form input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .update-form input:focus {
+            border-color: #555;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .update-form button {
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .update-form button:hover {
+            background-color: #555;
+            transform: translateY(-2px);
         }
         
         .error-message {
             color: #dc3545;
             margin-bottom: 15px;
+            padding: 8px;
+            background-color: rgba(220, 53, 69, 0.1);
+            border-radius: 4px;
+            font-size: 0.9em;
         }
         
         .success-message {
             color: #28a745;
-            margin-bottom: 15px;
-            padding: 10px;
+            margin-bottom: 20px;
+            padding: 12px;
             background-color: #d4edda;
             border-radius: 5px;
+            border-left: 4px solid #28a745;
+            font-weight: bold;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .account-section {
+                max-width: 90%;
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -226,7 +284,7 @@ $conn->close();
         <nav>
             <ul>
                 <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
-                <li><a href="../Page_Garde/Garde.php">Page de garde</a></li>
+                <li><a href="../Page_Home/Home.php">Page d'accueil</a></li>
                 <li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>
                 <li><a href="../logout.php">Déconnexion</a></li>
             </ul>
@@ -270,7 +328,7 @@ $conn->close();
                 </form>
             </div>
             
-            <div class="update-form">
+            <div class="update-form" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
                 <h3>Modifier l'adresse email</h3>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <label for="email">Adresse email (facultatif) :</label>

@@ -9,6 +9,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to login page
-header("location: Page_Garde/Garde.php");
+header("location: Page_Home/Home.php");
 exit;
 ?>
