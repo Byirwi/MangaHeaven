@@ -184,6 +184,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Compte - MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
     <style>
         .account-section {
             max-width: 600px;

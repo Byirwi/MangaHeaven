@@ -17,6 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
 </head>
 <body>
     <!-- En-tête de la page -->

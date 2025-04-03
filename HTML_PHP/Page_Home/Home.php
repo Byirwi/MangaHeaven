@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur MangaHeaven - Votre univers manga</title>
     <link href="../../Styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
 </head>
 <body>
     <!-- En-tête de la page -->
