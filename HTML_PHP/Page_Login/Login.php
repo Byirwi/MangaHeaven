@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Métadonnées et lien vers le fichier CSS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - MangaHeaven</title>
+    <title>MangaHeaven</title>
     <link rel="stylesheet" href="../../Styles.css">
     <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
     <style>

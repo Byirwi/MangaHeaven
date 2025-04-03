@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur MangaHeaven - Votre univers manga</title>
+    <title>MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
     <!-- Favicon - multiple formats for better compatibility -->
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
