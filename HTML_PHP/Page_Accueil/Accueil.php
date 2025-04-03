@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaHeaven</title>
-    <link href="../Styles.css" rel="stylesheet">
+    <link href="../../Styles.css" rel="stylesheet">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -13,9 +13,9 @@
         <h1>Bienvenue sur MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="Accueil.php">Accueil</a></li>
+                <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
                 <!-- <li><a href="ListeMangas.php">Liste des Mangas</a></li> -->
-                <li><a href="Login.php">Connexion</a></li>
+                <li><a href="../Page_Login/Login.php">Connexion</a></li>
             </ul>
         </nav>
     </header>
@@ -26,23 +26,23 @@
             <div class="manga-container">
                 <!-- Liste des mangas populaires -->
                 <div class="manga-item">
-                    <img src="../images/Naruto.jpg" alt="Naruto">
+                    <img src="../../images/Naruto.jpg" alt="Naruto">
                     <h3>Naruto</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/one_piece.jpg" alt="One Piece">
+                    <img src="../../images/one_piece.jpg" alt="One Piece">
                     <h3>One Piece</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/attack_on_titan.jpg" alt="Attack on Titan">
+                    <img src="../../images/attack_on_titan.jpg" alt="Attack on Titan">
                     <h3>Attack on Titan</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/my_hero_academia.jpg" alt="My Hero Academia">
+                    <img src="../../images/my_hero_academia.jpg" alt="My Hero Academia">
                     <h3>My Hero Academia</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/arifureta.jpg" alt="Arifureta">
+                    <img src="../../images/arifureta.jpg" alt="Arifureta">
                     <h3>Arifureta</h3>
                 </div>
             </div>

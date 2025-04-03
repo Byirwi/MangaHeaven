@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - MangaHeaven</title>
-    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="../../Styles.css">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -13,9 +13,9 @@
         <h1>Connexion à MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="Accueil.php">Accueil</a></li>
+                <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
                 <!-- <li><a href="ListeMangas.html">Liste des Mangas</a></li> -->
-                <li><a href="Login.php">Connexion</a></li>
+                <li><a href="../Page_Login/Login.php">Connexion</a></li>
             </ul>
         </nav>
     </header>
@@ -23,7 +23,7 @@
     <main>
         <section class="login-section">
             <h2>Connectez-vous à votre compte</h2>
-            <form class="login-form" action="Accueil.php" method="post">
+            <form class="login-form" action="../Page_Accueil/Accueil.php" method="post">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Mot de passe :</label>

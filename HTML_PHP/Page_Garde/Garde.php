@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur MangaHeaven - Votre univers manga</title>
-    <link href="../Styles.css" rel="stylesheet">
+    <link href="../../Styles.css" rel="stylesheet">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -12,8 +12,8 @@
         <h1>MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="Accueil.php">Accueil</a></li>
-                <li><a href="Login.php">Connexion</a></li>
+                <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
+                <li><a href="../Page_Login/Login.php">Connexion</a></li>
             </ul>
         </nav>
     </header>
@@ -25,12 +25,12 @@
                 <h2>Plongez dans l'univers des mangas</h2>
                 <p>Découvrez, lisez et suivez vos mangas préférés en ligne.</p>
                 <div class="cta-buttons">
-                    <a href="Accueil.php" class="cta-button primary">Explorer les mangas</a>
-                    <a href="Login.php" class="cta-button secondary">Se connecter</a>
+                    <a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>
+                    <a href="../Page_Login/Login.php" class="cta-button secondary">Se connecter</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="../images/hero-collage.png" alt="Collection de mangas populaires">
+                <img src="../../images/hero-collage.png" alt="Collection de mangas populaires">
             </div>
         </section>
 
@@ -56,15 +56,15 @@
             <h2>Tendances du moment</h2>
             <div class="manga-container">
                 <div class="manga-item">
-                    <img src="../images/Naruto.jpg" alt="Naruto">
+                    <img src="../../images/Naruto.jpg" alt="Naruto">
                     <h3>Naruto</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/one_piece.jpg" alt="One Piece">
+                    <img src="../../images/one_piece.jpg" alt="One Piece">
                     <h3>One Piece</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/attack_on_titan.jpg" alt="Attack on Titan">
+                    <img src="../../images/attack_on_titan.jpg" alt="Attack on Titan">
                     <h3>Attack on Titan</h3>
                 </div>
             </div>
