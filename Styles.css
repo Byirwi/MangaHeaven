@@ -185,6 +185,14 @@ footer {
     gap: 15px;
 }
 
+/* Enhanced CTA buttons for logged-in users */
+.landing-hero .cta-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .cta-button {
     padding: 12px 24px;
     border-radius: 5px;
@@ -784,5 +792,17 @@ footer {
         overflow-x: hidden;
         position: relative;
         width: 100%;
+    }
+}
+
+/* Make sure buttons work well in small screens and when there are multiple buttons */
+@media (min-width: 769px) {
+    .landing-hero .cta-buttons {
+        flex-direction: row;
+    }
+    
+    .cta-button {
+        min-width: 180px;
+        text-align: center;
     }
 }
