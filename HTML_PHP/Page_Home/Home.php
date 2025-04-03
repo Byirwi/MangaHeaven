@@ -26,8 +26,8 @@ session_start();
                 // If user is logged in, show Accueil, Mon Compte and Logout links, otherwise show Login and Register
                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo '<li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>';
-                    echo '<li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>';
                     echo '<li><a href="../Page_Home/Home.php">Home</a></li>';
+                    echo '<li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>';
                     echo '<li><a href="../logout.php">Déconnexion</a></li>';
                 } else {
                     echo '<li><a href="../Page_Login/Login.php">Connexion</a></li>';
