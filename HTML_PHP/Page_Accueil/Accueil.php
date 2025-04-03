@@ -12,9 +12,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- lien vers le fichier CSS -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">

@@ -587,6 +587,86 @@ footer {
         border-radius: 50%;
         margin: 0 auto 15px;
     }
+    
+    /* Better header and navigation */
+    header {
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* Improved scrollable navigation */
+    nav {
+        padding: 8px 0;
+        margin-top: 5px;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    nav::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    nav ul li a {
+        padding: 8px 12px;
+        display: inline-block;
+        border-radius: 20px;
+        transition: background-color 0.2s;
+    }
+    
+    nav ul li a:active {
+        background-color: rgba(255,255,255,0.2);
+    }
+    
+    /* Enhanced mobile form experience */
+    .login-form input, .update-form input {
+        padding: 14px 12px;
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        margin-bottom: 15px;
+    }
+    
+    .login-form button, .update-form button {
+        padding: 14px;
+        margin-top: 5px;
+        font-size: 16px;
+        height: 50px;
+    }
+    
+    /* Touch-friendly manga items */
+    .manga-item {
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        margin-bottom: 20px;
+    }
+    
+    .manga-item img {
+        height: 170px;
+        object-position: top;
+    }
+    
+    /* Fixed manga display */
+    .manga-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+        justify-content: center;
+        padding: 0 5px;
+    }
+    
+    /* Better spacing on all pages */
+    main {
+        margin-bottom: 70px;
+    }
+    
+    section:not(.landing-hero) {
+        margin-bottom: 30px;
+        padding: 0 5px;
+    }
+    
+    h2 {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
 }
 
 /* Small Phones */
@@ -642,5 +722,67 @@ footer {
         width: 100%;
         text-align: center;
         padding: 10px;
+    }
+    
+    body {
+        font-size: 15px;
+    }
+    
+    /* Fix for stacked navigation */
+    nav ul {
+        padding: 0 5px;
+    }
+    
+    nav ul li {
+        margin: 0 3px;
+    }
+    
+    /* Fixed manga grid for smallest screens */
+    .manga-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .manga-item {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        margin-bottom: 0;
+    }
+    
+    /* Better form layout */
+    .login-section, .account-section {
+        padding: 15px 12px;
+        margin: 10px auto 50px;
+    }
+    
+    /* Ensure buttons are large enough to tap */
+    button, .cta-button {
+        min-height: 44px; /* Apple's recommended touch target size */
+    }
+    
+    /* Fix footer */
+    footer {
+        font-size: 0.9em;
+    }
+}
+
+/* Ensure modals and dropdowns work well on mobile */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* Fix form inputs on iOS */
+    input, textarea, select, button {
+        font-size: 16px !important; /* Prevents automatic zoom on focus in iOS */
+    }
+    
+    /* Fix any potential page overflow issues */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
     }
 }

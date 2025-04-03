@@ -6,7 +6,7 @@ session_start();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
     <!-- Favicon - multiple formats for better compatibility -->
@@ -15,6 +15,9 @@ session_start();
     <link rel="apple-touch-icon" href="../../favicon.png">
     <!-- Force favicon refresh with this meta tag -->
     <meta name="theme-color" content="#222222">
+    
+    <!-- Add touch highlight color for better mobile feedback -->
+    <meta name="msapplication-tap-highlight" content="#ff5252">
 </head>
 <body>
     <!-- En-tête de la page -->
