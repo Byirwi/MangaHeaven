@@ -44,32 +44,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Validate email
-    if(empty(trim($_POST["email"]))){
-        $email_err = "Veuillez entrer une adresse email.";     
-    } elseif(!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)){
-        $email_err = "Format d'email invalide.";
-    } else {
-        // Check if email already exists
-        $sql = "SELECT id FROM users WHERE email = ?";
-        
-        if($stmt = $conn->prepare($sql)){
-            $stmt->bind_param("s", $param_email);
-            $param_email = trim($_POST["email"]);
+    // Validate email - made optional
+    if(!empty(trim($_POST["email"]))){
+        // Only validate if email is provided
+        if(!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)){
+            $email_err = "Format d'email invalide.";
+        } else {
+            // Check if email already exists
+            $sql = "SELECT id FROM users WHERE email = ?";
             
-            if($stmt->execute()){
-                $stmt->store_result();
+            if($stmt = $conn->prepare($sql)){
+                $stmt->bind_param("s", $param_email);
+                $param_email = trim($_POST["email"]);
                 
-                if($stmt->num_rows == 1){
-                    $email_err = "Cette adresse email est déjà utilisée.";
+                if($stmt->execute()){
+                    $stmt->store_result();
+                    
+                    if($stmt->num_rows == 1){
+                        $email_err = "Cette adresse email est déjà utilisée.";
+                    } else{
+                        $email = trim($_POST["email"]);
+                    }
                 } else{
-                    $email = trim($_POST["email"]);
+                    echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
                 }
-            } else{
-                echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
+                
+                $stmt->close();
             }
-            
-            $stmt->close();
         }
     }
     
@@ -106,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_username = $username;
             // Create a password hash
             $param_password = password_hash($password, PASSWORD_DEFAULT); 
-            $param_email = $email;
+            $param_email = $email ?: null; // Use null if email is empty
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -161,8 +162,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>
                 <?php if(!empty($username_err)){ echo '<div class="error-message">' . $username_err . '</div>'; } ?>
                 
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+                <label for="email">Email (facultatif) :</label>
+                <input type="email" id="email" name="email" value="<?php echo $email; ?>">
                 <?php if(!empty($email_err)){ echo '<div class="error-message">' . $email_err . '</div>'; } ?>
                 
                 <label for="password">Mot de passe :</label>
