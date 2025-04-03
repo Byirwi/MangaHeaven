@@ -9,7 +9,12 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur MangaHeaven - Votre univers manga</title>
     <link href="../../Styles.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../../images/logo_MangaHeaven.png">
+    <!-- Favicon - multiple formats for better compatibility -->
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="apple-touch-icon" href="../../favicon.png">
+    <!-- Force favicon refresh with this meta tag -->
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
     <!-- En-tête de la page -->
