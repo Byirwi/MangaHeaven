@@ -26,7 +26,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <ul>
                 <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
                 <!-- <li><a href="ListeMangas.php">Liste des Mangas</a></li> -->
-                <li><a href="../Page_Garde/Garde.php">Page d'accueil</a></li>
+                <li><a href="../Page_Garde/Garde.php">Page de garde</a></li>
                 <li><a href="../logout.php">Déconnexion</a></li>
             </ul>
         </nav>
