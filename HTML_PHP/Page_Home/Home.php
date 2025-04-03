@@ -20,7 +20,7 @@ session_start();
 <body>
     <!-- En-tête de la page -->
     <header>
-        <h1>MangaHeaven</h1>
+        <h1>Home</h1>
         <nav>
             <ul>
                 <?php
