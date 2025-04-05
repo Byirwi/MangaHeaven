@@ -183,6 +183,8 @@ footer {
 .cta-buttons {
     display: flex;
     gap: 15px;
+    justify-content: center; /* Center buttons by default */
+    width: 100%; /* Ensure full width */
 }
 
 /* Enhanced CTA buttons for logged-in users */
@@ -675,6 +677,22 @@ footer {
         margin-bottom: 15px;
         font-size: 1.5em;
     }
+    
+    /* Make CTA buttons properly centered on mobile */
+    .landing-hero .cta-buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center; /* Center buttons */
+        margin: 0 auto;
+        gap: 12px;
+        padding: 0 15px; /* Add padding instead of width restriction */
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 280px; /* Limit maximum width */
+        text-align: center;
+    }
 }
 
 /* Small Phones */
@@ -772,6 +790,12 @@ footer {
     /* Fix footer */
     footer {
         font-size: 0.9em;
+    }
+    
+    .cta-button {
+        width: 100%; /* Full width on very small screens */
+        padding: 12px 10px;
+        min-height: 44px; /* Better touch target */
     }
 }
 
