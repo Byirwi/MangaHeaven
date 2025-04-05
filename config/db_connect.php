@@ -1,97 +1,110 @@
 <?php
-// Load configuration (credentials)
+/* ==========================================================================
+   CONNEXION ET FONCTIONS DATABASE - MangaHeaven
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CHARGEMENT DE LA CONFIGURATION
+   -------------------------------------------------------------------------- */
+// Inclusion des paramètres de connexion à la base de données
 require_once __DIR__ . '/db_config.php';
 
-// Create connection with MySQLi and improved error handling
+/* --------------------------------------------------------------------------
+   ÉTABLISSEMENT DE LA CONNEXION MYSQLI
+   -------------------------------------------------------------------------- */
 try {
-    // Initialize MySQLi connection
+    // Initialisation de la connexion MySQLi
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
     
-    // Check connection
+    // Vérification de la connexion
     if ($conn->connect_error) {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
     
-    // Configure SSL if enabled
+    // Configuration SSL si activée (sécurité supplémentaire)
     if (defined('DB_SSL') && DB_SSL) {
-        // Enable SSL connection
-        $conn->ssl_set(NULL, NULL, '/path/to/ca.pem', NULL, NULL); // Update with real path if available
+        // Activation de la connexion SSL
+        $conn->ssl_set(NULL, NULL, '/path/to/ca.pem', NULL, NULL); // À mettre à jour avec le vrai chemin
     }
     
-    // Set charset to ensure proper handling of special characters
+    // Définition du jeu de caractères pour gérer correctement les caractères spéciaux
     $conn->set_charset("utf8mb4");
     
 } catch (Exception $e) {
-    // More user-friendly error handling
+    // Gestion des erreurs adaptée au contexte (production vs développement)
     if (strpos($_SERVER['HTTP_HOST'] ?? '', 'ldpa-tech.fr') !== false) {
-        // On production, don't show detailed errors
+        // En production, masquer les détails techniques
         error_log("Database connection error: " . $e->getMessage());
         die("Une erreur de connexion à la base de données s'est produite. Veuillez contacter l'administrateur.");
     } else {
-        // In development, show detailed errors
+        // En développement, montrer les détails pour faciliter le débogage
         die("Database connection error: " . $e->getMessage());
     }
 }
 
+/* --------------------------------------------------------------------------
+   FONCTION UTILITAIRE POUR REQUÊTES PRÉPARÉES
+   -------------------------------------------------------------------------- */
 /**
- * Helper function to execute prepared statements securely with MySQLi
+ * Fonction d'exécution sécurisée de requêtes préparées avec MySQLi
  * 
- * @param string $sql The SQL statement to prepare
- * @param array $params Array of parameters to bind (format: ['types', param1, param2, ...])
- * @return mysqli_stmt|bool The executed statement or result
+ * @param string $sql La requête SQL à préparer
+ * @param array $params Tableau de paramètres à lier (format: ['types', param1, param2, ...])
+ * @return mysqli_stmt|bool La requête exécutée ou le résultat
  */
 function dbExecute($sql, $params = []) {
     global $conn;
     try {
+        // Préparation de la requête
         $stmt = $conn->prepare($sql);
         
         if ($stmt === false) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
         }
         
-        // If we have parameters, bind them
+        // Liaison des paramètres si nécessaire
         if (!empty($params)) {
             $types = '';
             $bindParams = [];
             
-            // For MySQLi we need to separate the types from the values
+            // Pour MySQLi, séparation des types et des valeurs
             foreach ($params as $param) {
                 if (is_int($param)) {
-                    $types .= 'i';
+                    $types .= 'i'; // Integer
                 } elseif (is_float($param)) {
-                    $types .= 'd';
+                    $types .= 'd'; // Double
                 } elseif (is_string($param)) {
-                    $types .= 's';
+                    $types .= 's'; // String
                 } else {
-                    $types .= 'b';
+                    $types .= 'b'; // Blob
                 }
                 $bindParams[] = $param;
             }
             
-            // First parameter is the types string, followed by references to each value
+            // Préparation des paramètres pour bind_param
             $bindParamsRef = [];
             $bindParamsRef[] = $types;
             
-            // Create references for bind_param
+            // Création des références pour bind_param
             foreach ($bindParams as $key => $value) {
                 $bindParamsRef[] = &$bindParams[$key];
             }
             
-            // Call bind_param with unpacked array of references
+            // Appel de bind_param avec le tableau de références décompressé
             call_user_func_array([$stmt, 'bind_param'], $bindParamsRef);
         }
         
-        // Execute the statement
+        // Exécution de la requête
         if (!$stmt->execute()) {
             throw new Exception("Failed to execute statement: " . $stmt->error);
         }
         
         return $stmt;
     } catch (Exception $e) {
-        // Log the error
+        // Journalisation de l'erreur
         error_log("SQL Error: " . $e->getMessage() . " in query: " . $sql);
         
-        // In production, hide details
+        // Gestion différente selon l'environnement
         if (strpos($_SERVER['HTTP_HOST'] ?? '', 'ldpa-tech.fr') !== false) {
             throw new Exception("Une erreur de base de données s'est produite.");
         } else {

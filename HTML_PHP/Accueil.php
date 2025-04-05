@@ -1,8 +1,15 @@
 <?php
-// Initialize the session
+/* ==========================================================================
+   PAGE D'ACCUEIL UTILISATEUR - MangaHeaven
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   INITIALISATION & VÉRIFICATION DE SESSION
+   -------------------------------------------------------------------------- */
+// Démarrage de la session
 session_start();
 
-// Check if the user is logged in, if not then redirect to login page
+// Vérification si l'utilisateur est connecté, sinon redirection
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: Login.php");
     exit;
@@ -20,7 +27,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="icon" type="image/png" href="../Public/Logo/favicon.png">
 </head>
 <body>
-    <!-- En-tête de la page -->
+    <!-- En-tête de la page avec le nom de l'utilisateur -->
     <header>
         <h1>Bienvenue sur MangaHeaven, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1>
         <nav>
@@ -33,7 +40,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </ul>
         </nav>
     </header>
-    <!-- Contenu principal -->
+    
+    <!-- Contenu principal avec liste de mangas populaires -->
     <main>
         <section class="manga-list">
             <h2>Mangas Populaires</h2>
@@ -62,6 +70,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
         </section>
     </main>
+    
     <!-- Pied de page -->
     <footer>
         <p>&copy; 2025 Lecture de Manga en Ligne. Tous droits réservés.</p>

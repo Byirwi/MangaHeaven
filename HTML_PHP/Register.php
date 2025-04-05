@@ -1,33 +1,44 @@
 <?php
-// Include database connection
+/* ==========================================================================
+   SYSTÈME D'INSCRIPTION - MangaHeaven
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   INCLUSION DES DÉPENDANCES
+   -------------------------------------------------------------------------- */
+// Inclusion de la connexion à la base de données
 require_once('../config/db_connect.php');
 
-// Define variables and initialize with empty values
+/* --------------------------------------------------------------------------
+   INITIALISATION DES VARIABLES
+   -------------------------------------------------------------------------- */
+// Définition et initialisation des variables pour le formulaire
 $username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
 
-// Processing form data when form is submitted
+/* --------------------------------------------------------------------------
+   TRAITEMENT DU FORMULAIRE D'INSCRIPTION
+   -------------------------------------------------------------------------- */
+// Traitement lorsque le formulaire est soumis
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate username
+    // Validation du nom d'utilisateur
     if(empty(trim($_POST["username"]))){
         $username_err = "Veuillez entrer un nom d'utilisateur.";
     } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
         $username_err = "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des underscores.";
     } else {
-        // Prepare a select statement
+        // Vérification de l'unicité du nom d'utilisateur
         $sql = "SELECT id FROM users WHERE username = ?";
         
         if($stmt = $conn->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+            // Liaison des paramètres
             $stmt->bind_param("s", $param_username);
-            
-            // Set parameters
             $param_username = trim($_POST["username"]);
             
-            // Attempt to execute the prepared statement
+            // Exécution de la requête
             if($stmt->execute()){
-                // Store result
+                // Stockage du résultat
                 $stmt->store_result();
                 
                 if($stmt->num_rows == 1){
@@ -39,18 +50,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
             }
 
-            // Close statement
+            // Fermeture de la requête
             $stmt->close();
         }
     }
     
-    // Validate email - made optional
+    // Validation de l'email (facultatif)
     if(!empty(trim($_POST["email"]))){
-        // Only validate if email is provided
+        // Validation uniquement si l'email est fourni
         if(!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)){
             $email_err = "Format d'email invalide.";
         } else {
-            // Check if email already exists
+            // Vérification que l'email n'est pas déjà utilisé
             $sql = "SELECT id FROM users WHERE email = ?";
             
             if($stmt = $conn->prepare($sql)){
@@ -74,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Validate password
+    // Validation du mot de passe
     if(empty(trim($_POST["password"]))){
         $password_err = "Veuillez entrer un mot de passe.";     
     } elseif(strlen(trim($_POST["password"])) < 6){
@@ -83,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
     
-    // Validate confirm password
+    // Validation de la confirmation du mot de passe
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Veuillez confirmer le mot de passe.";     
     } else{
@@ -93,36 +104,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Check input errors before inserting in database
+    // Vérification des erreurs avant insertion dans la base de données
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
         
-        // Prepare an insert statement
+        // Préparation de la requête d'insertion
         $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
          
         if($stmt = $conn->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+            // Liaison des paramètres
             $stmt->bind_param("sss", $param_username, $param_password, $param_email);
             
-            // Set parameters
+            // Configuration des paramètres
             $param_username = $username;
-            // Create a password hash
+            // Hachage du mot de passe pour sécurité
             $param_password = password_hash($password, PASSWORD_DEFAULT); 
-            $param_email = $email ?: null; // Use null if email is empty
+            $param_email = $email ?: null; // Utiliser null si email est vide
             
-            // Attempt to execute the prepared statement
+            // Exécution de la requête
             if($stmt->execute()){
-                // Redirect to login page
+                // Redirection vers la page de connexion
                 header("location: Login.php");
             } else{
                 echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
             }
 
-            // Close statement
+            // Fermeture de la requête
             $stmt->close();
         }
     }
     
-    // Close connection
+    // Fermeture de la connexion
     $conn->close();
 }
 ?>
@@ -153,6 +164,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <main>
         <section class="login-section">
             <h2>Créer un compte</h2>
+            <!-- Formulaire d'inscription -->
             <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>

@@ -1,23 +1,39 @@
 <?php
-// Initialize the session
+/* ==========================================================================
+   DÉCONNEXION UTILISATEUR - MangaHeaven
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GESTION DE LA SESSION
+   -------------------------------------------------------------------------- */
+// Initialisation de la session pour accéder aux variables
 session_start();
 
-// Unset all of the session variables
+// Effacement de toutes les variables de session
 $_SESSION = array();
 
-// If it's desired to kill the session, also delete the session cookie
+/* --------------------------------------------------------------------------
+   SUPPRESSION DU COOKIE DE SESSION
+   -------------------------------------------------------------------------- */
+// Si l'utilisation de cookies de session est activée, suppression du cookie
 if (ini_get("session.use_cookies")) {
+    // Récupération des paramètres du cookie de session
     $params = session_get_cookie_params();
+    
+    // Définition d'un cookie de session expiré pour le forcer à être supprimé
     setcookie(session_name(), '', time() - 42000,
         $params["path"], $params["domain"],
         $params["secure"], $params["httponly"]
     );
 }
 
-// Destroy the session
+/* --------------------------------------------------------------------------
+   DESTRUCTION DE LA SESSION ET REDIRECTION
+   -------------------------------------------------------------------------- */
+// Destruction complète de la session
 session_destroy();
 
-// Redirect to home page
+// Redirection vers la page d'accueil
 header("location: Home.php");
 exit;
 ?>

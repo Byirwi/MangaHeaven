@@ -1,88 +1,104 @@
 <?php
+/* ==========================================================================
+   SYSTÈME DE CONNEXION - MangaHeaven
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   INITIALISATION & VÉRIFICATION DE SESSION
+   -------------------------------------------------------------------------- */
+// Démarrage de la session pour gérer les variables de session
 session_start();
 
-// Check if user is already logged in
+// Redirection si l'utilisateur est déjà connecté
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header('Location: Accueil.php');
     exit;
 }
 
-// Include database connection
+/* --------------------------------------------------------------------------
+   INCLUSION DES DÉPENDANCES
+   -------------------------------------------------------------------------- */
+// Inclusion de la connexion à la base de données
 require_once('../config/db_connect.php');
 
-// Define variables and initialize with empty values
+/* --------------------------------------------------------------------------
+   INITIALISATION DES VARIABLES
+   -------------------------------------------------------------------------- */
+// Définition et initialisation des variables pour le formulaire
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
-// Processing form data when form is submitted
+/* --------------------------------------------------------------------------
+   TRAITEMENT DU FORMULAIRE DE CONNEXION
+   -------------------------------------------------------------------------- */
+// Traitement des données du formulaire lors de la soumission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Check if username is empty
+    // Vérification du nom d'utilisateur
     if (empty(trim($_POST["username"]))) {
         $username_err = "Veuillez entrer votre nom d'utilisateur.";
     } else {
         $username = trim($_POST["username"]);
     }
     
-    // Check if password is empty
+    // Vérification du mot de passe
     if (empty(trim($_POST["password"]))) {
         $password_err = "Veuillez entrer votre mot de passe.";
     } else {
         $password = trim($_POST["password"]);
     }
     
-    // Validate credentials
+    // Validation des identifiants si aucune erreur
     if (empty($username_err) && empty($password_err)) {
-        // Prepare a select statement
+        // Préparation de la requête SQL pour vérifier l'utilisateur
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
         if ($stmt = $conn->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
+            // Association des paramètres avec la requête préparée
             $stmt->bind_param("s", $param_username);
-            
-            // Set parameters
             $param_username = $username;
             
-            // Attempt to execute the prepared statement
+            // Exécution de la requête
             if ($stmt->execute()) {
-                // Store result
+                // Stockage du résultat
                 $stmt->store_result();
                 
-                // Check if username exists, if yes then verify password
+                // Vérification de l'existence du nom d'utilisateur
                 if ($stmt->num_rows == 1) {
-                    // Bind result variables
+                    // Récupération des variables de résultat
                     $stmt->bind_result($id, $username, $hashed_password);
                     if ($stmt->fetch()) {
+                        // Vérification du mot de passe
                         if (password_verify($password, $hashed_password)) {
-                            // Password is correct, so start a new session
+                            // Initialisation d'une nouvelle session
                             session_start();
                             
-                            // Store data in session variables
+                            // Stockage des données dans les variables de session
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            // Redirect user to welcome page
+                            // Redirection vers la page d'accueil
                             header("location: Accueil.php");
                         } else {
-                            // Password is not valid, display a generic error message
+                            // Message d'erreur générique pour la sécurité
                             $login_err = "Nom d'utilisateur ou mot de passe invalide.";
                         }
                     }
                 } else {
-                    // Username doesn't exist, display a generic error message
+                    // Message d'erreur générique pour la sécurité
                     $login_err = "Nom d'utilisateur ou mot de passe invalide.";
                 }
             } else {
                 echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
             }
 
-            // Close statement
+            // Fermeture de la requête préparée
             $stmt->close();
         }
     }
     
-    // Close connection
+    // Fermeture de la connexion à la base de données
     $conn->close();
 }
 ?>
@@ -110,17 +126,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
         </nav>
     </header>
+    
     <!-- Contenu principal -->
     <main>
         <section class="login-section">
             <h2>Connectez-vous à votre compte</h2>
             
             <?php 
+            // Affichage du message d'erreur de connexion si nécessaire
             if(!empty($login_err)){
                 echo '<div class="error-message">' . $login_err . '</div>';
             }        
             ?>
             
+            <!-- Formulaire de connexion -->
             <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>
@@ -135,6 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </section>
     </main>
+    
     <!-- Pied de page -->
     <footer>
         <p>&copy; 2025 Manga-Heaven. Tous droits réservés.</p>
