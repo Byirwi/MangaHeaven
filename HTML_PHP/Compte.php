@@ -270,9 +270,17 @@ $conn->close();
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             
+            // Vérifier l'état initial du thème
+            const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+            
             themeToggle.addEventListener('click', function() {
                 // Utiliser le ThemeManager pour basculer entre les thèmes
                 window.themeManager.toggleTheme();
+            });
+            
+            // Écouter les changements de thème
+            document.addEventListener('themeChanged', function(e) {
+                // Le thème a changé, pas besoin de code supplémentaire car le CSS gère l'affichage
             });
         });
     </script>

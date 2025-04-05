@@ -178,6 +178,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Utiliser le ThemeManager pour basculer entre les thèmes
                 window.themeManager.toggleTheme();
             });
+            
+            // Force une mise à jour initiale des icônes
+            const initialTheme = window.themeManager.getPreferredTheme();
+            window.themeManager.updateThemeIcons(initialTheme);
         });
     </script>
 </body>

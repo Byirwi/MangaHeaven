@@ -41,8 +41,35 @@ class ThemeManager {
     // Save preference to localStorage
     localStorage.setItem(this.themeKey, theme);
     
+    // Force update of moon/sun icons - add this
+    this.updateThemeIcons(theme);
+    
     // Dispatch event for theme change
     document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+  }
+  
+  // Add a new method to explicitly update theme icons
+  updateThemeIcons(theme) {
+    // Directly update all theme icons based on current theme
+    if (theme === 'dark') {
+      document.querySelectorAll('.icon-moon').forEach(icon => {
+        icon.style.opacity = '0';
+        icon.style.transform = 'translateY(-20px)';
+      });
+      document.querySelectorAll('.icon-sun').forEach(icon => {
+        icon.style.opacity = '1';
+        icon.style.transform = 'translateY(0)';
+      });
+    } else {
+      document.querySelectorAll('.icon-moon').forEach(icon => {
+        icon.style.opacity = '1';
+        icon.style.transform = 'translateY(0)';
+      });
+      document.querySelectorAll('.icon-sun').forEach(icon => {
+        icon.style.opacity = '0';
+        icon.style.transform = 'translateY(20px)';
+      });
+    }
   }
 
   // Toggle between light and dark themes
@@ -56,7 +83,11 @@ class ThemeManager {
   // Initialize theme based on saved preference or system default
   initTheme() {
     // Set initial theme
-    this.setTheme(this.getPreferredTheme());
+    const initialTheme = this.getPreferredTheme();
+    this.setTheme(initialTheme);
+    
+    // Also explicitly update icons on init
+    this.updateThemeIcons(initialTheme);
     
     // Listen for system preference changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
