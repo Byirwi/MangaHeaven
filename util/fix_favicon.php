@@ -163,7 +163,7 @@ $php_files = [
     $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Register.php'
 ];
 
-$correct_favicon_link = '<link rel="icon" type="image/png" href="../Public/Logo/favicon.png?v=<?php echo time(); ?>">';
+$correct_favicon_link = '<link rel="icon" type="image/png" href="../Public/Logo/favicon.png">';
 
 foreach ($php_files as $file) {
     if (file_exists($file)) {
