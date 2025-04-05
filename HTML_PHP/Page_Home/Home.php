@@ -2,12 +2,14 @@
 // Initialize the session
 session_start();
 
+// For debugging - uncomment to see session contents
+// echo '<pre>'; print_r($_SESSION); echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>MangaHeaven</title>
     <link href="../../Styles.css" rel="stylesheet">
     <!-- Favicon -->
@@ -24,18 +26,15 @@ session_start();
         <h1>Home</h1>
         <nav>
             <ul>
-                <?php
-                // If user is logged in, show Accueil, Mon Compte and Logout links, otherwise show Login and Register
-                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    echo '<li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>';
-                    echo '<li><a href="../Page_Home/Home.php">Home</a></li>';
-                    echo '<li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>';
-                    echo '<li><a href="../logout.php">Déconnexion</a></li>';
-                } else {
-                    echo '<li><a href="../Page_Login/Login.php">Connexion</a></li>';
-                    echo '<li><a href="../Page_Register/Register.php">Inscription</a></li>';
-                }
-                ?>
+                <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+                    <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
+                    <li><a href="../Page_Home/Home.php">Home</a></li>
+                    <li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>
+                    <li><a href="../logout.php">Déconnexion</a></li>
+                <?php else: ?>
+                    <li><a href="../Page_Login/Login.php">Connexion</a></li>
+                    <li><a href="../Page_Register/Register.php">Inscription</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -47,18 +46,13 @@ session_start();
                 <h2>Plongez dans l'univers des mangas</h2>
                 <p>Découvrez, lisez et suivez vos mangas préférés en ligne.</p>
                 <div class="cta-buttons">
-                    <?php
-                    // Ensure session is available and check if user is logged in
-                    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                        // User is logged in, show navigation options
-                        echo '<a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>';
-                        echo '<a href="../Page_Compte/Compte.php" class="cta-button secondary">Mon compte</a>';
-                    } else {
-                        // User is not logged in, show login/register options
-                        echo '<a href="../Page_Login/Login.php" class="cta-button primary">Explorer les mangas</a>';
-                        echo '<a href="../Page_Register/Register.php" class="cta-button secondary">S\'inscrire</a>';
-                    }
-                    ?>
+                    <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+                        <a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>
+                        <a href="../Page_Compte/Compte.php" class="cta-button secondary">Mon compte</a>
+                    <?php else: ?>
+                        <a href="../Page_Login/Login.php" class="cta-button primary">Explorer les mangas</a>
+                        <a href="../Page_Register/Register.php" class="cta-button secondary">S'inscrire</a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="hero-image">
