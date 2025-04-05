@@ -56,8 +56,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <h3>My Hero Academia</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../Public/images/arifureta.jpg" alt="Arifureta">
-                    <h3>Arifureta</h3>
+                    <img src="../Public/images/Solo_Leveling.png" alt="Solo Leveling">
+                    <h3>Solo Leveling</h3>
                 </div>
             </div>
         </section>
