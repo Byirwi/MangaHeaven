@@ -1,1 +1,3 @@
 db_setup.php
+config/db_config.php
+*.log
