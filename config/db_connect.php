@@ -2,10 +2,10 @@
 // Check if we're on production or local environment
 if (strpos($_SERVER['HTTP_HOST'], 'ldpa-tech.fr') !== false) {
     // Production database configuration
-    $servername = "localhost"; // Usually stays as localhost
-    $username = "delo5366_MangaHeaven_Account"; // Updated username
-    $password = "m@Vw6XndBrbumVaU.-e!QqyV"; // Updated password
-    $dbname = "delo5366_mangaheaven"; // Assumed database name based on username pattern
+    $servername = "localhost";
+    $username = "delo5366_MangaHeaven_Account";
+    $password = "m@Vw6XndBrbumVaU.-e!QqyV";
+    $dbname = "delo5366_mangaheaven";
 } else {
     // Local development database configuration
     $servername = "localhost";
