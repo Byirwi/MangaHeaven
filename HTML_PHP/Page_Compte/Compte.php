@@ -194,7 +194,7 @@ $conn->close();
         <nav>
             <ul>
                 <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
-                <li><a href="../Page_Home/Home.php">home</a></li>
+                <li><a href="../Page_Home/Home.php">Home</a></li>
                 <li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>
                 <li><a href="../logout.php">Déconnexion</a></li>
             </ul>
