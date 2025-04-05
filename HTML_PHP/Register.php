@@ -159,8 +159,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <!-- Bouton de bascule du thème -->
                 <li>
                     <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
-                        <span class="icon-moon">🌙</span>
-                        <span class="icon-sun">☀️</span>
+                        <span class="icon-moon"></span>
+                        <span class="icon-sun"></span>
                     </button>
                 </li>
             </ul>

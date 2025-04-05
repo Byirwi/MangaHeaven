@@ -85,8 +85,8 @@ session_start();
             <!-- Transformer la section Mode nuit en bouton de toggle de thème interactif -->
             <div class="feature-item theme-toggle-feature" id="themeToggle">
                 <div class="feature-icon">
-                    <span class="icon-moon">🌙</span>
-                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon"></span>
+                    <span class="icon-sun"></span>
                 </div>
                 <h3>Mode nuit</h3>
                 <p>Cliquez pour basculer entre thème clair et sombre</p>
