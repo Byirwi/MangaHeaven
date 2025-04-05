@@ -2,8 +2,6 @@
 // Initialize the session
 session_start();
 
-// Debug session state - remove this in production
-// echo '<pre>'; print_r($_SESSION); echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +21,7 @@ session_start();
 <body>
     <!-- En-tête de la page -->
     <header>
-        <h1>MangaHeaven</h1>
+        <h1>Home</h1>
         <nav>
             <ul>
                 <?php
