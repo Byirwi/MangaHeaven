@@ -18,13 +18,6 @@ if (!file_exists($logo_dir)) {
 // Définir tous les emplacements possibles du logo
 $possible_logo_paths = [
     __DIR__ . '/Public/Logo/logo_MangaHeaven.png',
-    __DIR__ . '/Public/images/logo_MangaHeaven.png',
-    __DIR__ . '/images/logo_MangaHeaven.png',
-    __DIR__ . '/Ressource/Logo/logo_MangaHeaven.png',
-    __DIR__ . '/Ressources/Logo/logo_MangaHeaven.png',
-    __DIR__ . '/Ressource/logo_MangaHeaven.png',
-    __DIR__ . '/Ressources/logo_MangaHeaven.png',
-    __DIR__ . '/logo_MangaHeaven.png'
 ];
 
 // Rechercher le logo dans tous les emplacements possibles
@@ -151,4 +144,13 @@ try {
 
 echo "<p>Si votre favicon ne s'affiche toujours pas, essayez de vider le cache de votre navigateur ou de forcer l'actualisation avec Ctrl+F5.</p>";
 echo "<p><a href='HTML_PHP/Home.php'>Retour à la page d'accueil</a></p>";
+
+echo "<div style='margin-top:20px; padding:15px; background:#f8f8f8; border:1px solid #ddd;'>";
+echo "<h3>Actions:</h3>";
+echo "<ul>";
+echo "<li><a href='../HTML_PHP/Home.php'>Aller à la page d'accueil</a></li>";
+echo "<li><a href='../Script/favicon.php'>Réexécuter le script favicon.php</a></li>";
+echo "<li>Pour forcer l'actualisation du favicon dans votre navigateur: <strong>Ctrl+F5</strong></li>";
+echo "</ul>";
+echo "</div>";
 ?>

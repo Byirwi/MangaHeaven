@@ -1,13 +1,96 @@
 <?php
 // This file will convert your logo to a favicon and save it
 
-// Check if logo exists
-$logo_path = __DIR__ . '/Public/images/logo_MangaHeaven.png';
-$favicon_png = __DIR__ . '/Public/images/favicon.png';
-$favicon_ico = __DIR__ . '/Public/images/favicon.ico';
+// Créer les dossiers s'ils n'existent pas
+$project_root = dirname(__DIR__); // Remonter d'un niveau pour obtenir la racine du projet
+$public_dir = $project_root . '/Public';
+$logo_dir = $public_dir . '/Logo';
 
-if (!file_exists($logo_path)) {
-    die("Logo file not found at: $logo_path");
+if (!file_exists($public_dir)) {
+    mkdir($public_dir, 0755);
+    echo "Dossier Public créé.<br>";
+}
+
+if (!file_exists($logo_dir)) {
+    mkdir($logo_dir, 0755);
+    echo "Dossier Public/Logo créé.<br>";
+}
+
+// Définir tous les emplacements possibles du logo
+$possible_logo_paths = [
+    $project_root . '/Public/Logo/logo_MangaHeaven.png',
+    $project_root . '/Public/images/logo_MangaHeaven.png',
+    $project_root . '/images/logo_MangaHeaven.png',
+    $project_root . '/Ressource/Logo/logo_MangaHeaven.png',
+    $project_root . '/Ressources/Logo/logo_MangaHeaven.png',
+    $project_root . '/Ressource/logo_MangaHeaven.png',
+    $project_root . '/Ressources/logo_MangaHeaven.png',
+    $project_root . '/logo_MangaHeaven.png'
+];
+
+// Rechercher le logo dans tous les emplacements possibles
+$logo_path = null;
+foreach ($possible_logo_paths as $path) {
+    if (file_exists($path)) {
+        $logo_path = $path;
+        echo "Logo trouvé à: $path<br>";
+        break;
+    }
+}
+
+// Définir les chemins de destination
+$favicon_png = $project_root . '/Public/Logo/favicon.png';
+$favicon_ico = $project_root . '/Public/Logo/favicon.ico';
+
+// Si le logo n'est trouvé dans aucun emplacement
+if ($logo_path === null) {
+    echo "<h2>Logo introuvable</h2>";
+    echo "<p>Le logo n'a pas été trouvé. J'ai cherché aux emplacements suivants:</p>";
+    echo "<ul>";
+    foreach ($possible_logo_paths as $path) {
+        echo "<li>" . htmlspecialchars($path) . "</li>";
+    }
+    echo "</ul>";
+    echo "<p>Veuillez placer le fichier <code>logo_MangaHeaven.png</code> dans l'un des dossiers ci-dessus.</p>";
+    echo "<p>Vous pouvez également téléverser votre logo maintenant:</p>";
+    
+    // Formulaire simple pour téléverser un logo
+    echo "<form action='' method='post' enctype='multipart/form-data'>";
+    echo "<input type='file' name='logo_file' accept='image/png'>";
+    echo "<input type='submit' name='submit' value='Téléverser le logo'>";
+    echo "</form>";
+    
+    // Traitement du téléversement du logo
+    if (isset($_POST['submit'])) {
+        if (isset($_FILES['logo_file']) && $_FILES['logo_file']['error'] === UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['logo_file']['tmp_name'];
+            $name = $_FILES['logo_file']['name'];
+            
+            // Vérifier que c'est bien un fichier PNG
+            $image_info = getimagesize($tmp_name);
+            if ($image_info[2] === IMAGETYPE_PNG) {
+                // Créer le dossier de destination si nécessaire
+                if (!file_exists($logo_dir)) {
+                    mkdir($logo_dir, 0755, true);
+                }
+                
+                // Déplacer le fichier vers le dossier Public/Logo
+                $logo_path = $logo_dir . '/logo_MangaHeaven.png';
+                if (move_uploaded_file($tmp_name, $logo_path)) {
+                    echo "<p>Logo téléversé avec succès!</p>";
+                    // Continuer le script (pas de die())
+                } else {
+                    die("Erreur lors du déplacement du fichier téléversé.");
+                }
+            } else {
+                die("Le fichier doit être au format PNG.");
+            }
+        } else {
+            die("Erreur lors du téléversement: " . $_FILES['logo_file']['error']);
+        }
+    } else {
+        die();
+    }
 }
 
 // Create the favicon.png (resized version of logo)
@@ -16,7 +99,7 @@ try {
         // Load the original image
         $source = imagecreatefrompng($logo_path);
         if (!$source) {
-            die("Could not create image from PNG. Check if the file is a valid PNG image.");
+            die("Impossible de créer l'image à partir du PNG. Vérifiez que le fichier est une image PNG valide.");
         }
         
         // Get original dimensions
@@ -45,20 +128,28 @@ try {
             imagewbmp($favicon, $favicon_ico);
         }
         
-        echo "Favicon created successfully at $favicon_png<br>";
+        echo "Favicon créé avec succès à $favicon_png<br>";
         if (file_exists($favicon_ico)) {
-            echo "ICO version also created at $favicon_ico<br>";
+            echo "Version ICO également créée à $favicon_ico<br>";
+        }
+        
+        // Copier le logo dans le dossier Public/Logo s'il n'y est pas déjà
+        if ($logo_path !== $logo_dir . '/logo_MangaHeaven.png') {
+            if (copy($logo_path, $logo_dir . '/logo_MangaHeaven.png')) {
+                echo "Logo copié vers Public/Logo/<br>";
+            }
         }
         
         // Cleanup
         imagedestroy($source);
         imagedestroy($favicon);
     } else {
-        echo "GD library not available. Please create favicon manually.";
+        echo "Bibliothèque GD non disponible. Veuillez créer le favicon manuellement.";
     }
 } catch (Exception $e) {
-    echo "Error creating favicon: " . $e->getMessage();
+    echo "Erreur lors de la création du favicon : " . $e->getMessage();
 }
 
-echo "<p>If your favicon still doesn't show up, try clearing your browser cache or forcing a refresh with Ctrl+F5.</p>";
+echo "<p>Si votre favicon ne s'affiche toujours pas, essayez de vider le cache de votre navigateur ou de forcer l'actualisation avec Ctrl+F5.</p>";
+echo "<p><a href='../HTML_PHP/Home.php'>Retour à la page d'accueil</a></p>";
 ?>
