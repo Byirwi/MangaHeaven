@@ -41,13 +41,7 @@ session_start();
                     <li><a href="Login.php">Connexion</a></li>
                     <li><a href="Register.php">Inscription</a></li>
                 <?php endif; ?>
-                <!-- Bouton de bascule du thème -->
-                <li>
-                    <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
-                        <span class="icon-moon">🌙</span>
-                        <span class="icon-sun">☀️</span>
-                    </button>
-                </li>
+                <!-- Bouton de bascule du thème retiré de la navigation -->
             </ul>
         </nav>
     </header>
@@ -88,10 +82,14 @@ session_start();
                 <h3>Marque-pages</h3>
                 <p>Reprenez votre lecture exactement où vous l'avez laissée</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🌙</div>
+            <!-- Transformer la section Mode nuit en bouton de toggle de thème interactif -->
+            <div class="feature-item theme-toggle-feature" id="themeToggle">
+                <div class="feature-icon">
+                    <span class="icon-moon">🌙</span>
+                    <span class="icon-sun">☀️</span>
+                </div>
                 <h3>Mode nuit</h3>
-                <p>Une lecture confortable, même dans l'obscurité</p>
+                <p>Cliquez pour basculer entre thème clair et sombre</p>
             </div>
         </section>
 
@@ -127,9 +125,32 @@ session_start();
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             
+            // Mise à jour de l'apparence initiale du bouton
+            updateThemeButtonAppearance();
+            
             themeToggle.addEventListener('click', function() {
                 // Utiliser le ThemeManager pour basculer entre les thèmes
                 window.themeManager.toggleTheme();
+                
+                // Mettre à jour l'apparence du bouton après changement
+                updateThemeButtonAppearance();
+            });
+            
+            // Fonction pour mettre à jour l'apparence du bouton selon le thème
+            function updateThemeButtonAppearance() {
+                const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const modeText = document.querySelector('#themeToggle h3');
+                
+                if (isDarkTheme) {
+                    modeText.textContent = 'Mode jour';
+                } else {
+                    modeText.textContent = 'Mode nuit';
+                }
+            }
+            
+            // Écouter les changements de thème pour mettre à jour l'apparence
+            document.addEventListener('themeChanged', function(e) {
+                updateThemeButtonAppearance();
             });
         });
     </script>
