@@ -183,9 +183,9 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link href="../Styles.css" rel="stylesheet">
+    <link href="../CSS/Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->

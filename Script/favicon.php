@@ -2,9 +2,9 @@
 // This file will convert your logo to a favicon and save it
 
 // Check if logo exists
-$logo_path = __DIR__ . '/images/logo_MangaHeaven.png';
-$favicon_png = __DIR__ . '/favicon.png';
-$favicon_ico = __DIR__ . '/favicon.ico';
+$logo_path = __DIR__ . '/Public/images/logo_MangaHeaven.png';
+$favicon_png = __DIR__ . '/Public/images/favicon.png';
+$favicon_ico = __DIR__ . '/Public/images/favicon.ico';
 
 if (!file_exists($logo_path)) {
     die("Logo file not found at: $logo_path");

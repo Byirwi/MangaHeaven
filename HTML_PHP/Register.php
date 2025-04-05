@@ -133,9 +133,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="../CSS/Styles.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->

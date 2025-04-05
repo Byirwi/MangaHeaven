@@ -15,9 +15,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link href="../Styles.css" rel="stylesheet">
+    <link href="../CSS/Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -40,23 +40,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <div class="manga-container">
                 <!-- Liste des mangas populaires -->
                 <div class="manga-item">
-                    <img src="../images/Naruto.jpg" alt="Naruto">
+                    <img src="../Public/images/Naruto.jpg" alt="Naruto">
                     <h3>Naruto</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/one_piece.jpg" alt="One Piece">
+                    <img src="../Public/images/one_piece.jpg" alt="One Piece">
                     <h3>One Piece</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/attack_on_titan.jpg" alt="Attack on Titan">
+                    <img src="../Public/images/attack_on_titan.jpg" alt="Attack on Titan">
                     <h3>Attack on Titan</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/my_hero_academia.jpg" alt="My Hero Academia">
+                    <img src="../Public/images/my_hero_academia.jpg" alt="My Hero Academia">
                     <h3>My Hero Academia</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/arifureta.jpg" alt="Arifureta">
+                    <img src="../Public/images/arifureta.jpg" alt="Arifureta">
                     <h3>Arifureta</h3>
                 </div>
             </div>

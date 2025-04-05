@@ -11,9 +11,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link href="../Styles.css" rel="stylesheet">
+    <link href="../CSS/Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
     <!-- Force favicon refresh with this meta tag -->
     <meta name="theme-color" content="#222222">
     
@@ -56,7 +56,7 @@ session_start();
                 </div>
             </div>
             <div class="hero-image">
-                <img src="../images/hero-collage.png" alt="Collection de mangas populaires">
+                <img src="../Public/images/hero-collage.png" alt="Collection de mangas populaires">
             </div>
         </section>
 
@@ -82,15 +82,15 @@ session_start();
             <h2>Tendances du moment</h2>
             <div class="manga-container">
                 <div class="manga-item">
-                    <img src="../images/Naruto.jpg" alt="Naruto">
+                    <img src="../Public/images/Naruto.jpg" alt="Naruto">
                     <h3>Naruto</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/one_piece.jpg" alt="One Piece">
+                    <img src="../Public/images/one_piece.jpg" alt="One Piece">
                     <h3>One Piece</h3>
                 </div>
                 <div class="manga-item">
-                    <img src="../images/attack_on_titan.jpg" alt="Attack on Titan">
+                    <img src="../Public/images/attack_on_titan.jpg" alt="Attack on Titan">
                     <h3>Attack on Titan</h3>
                 </div>
             </div>
