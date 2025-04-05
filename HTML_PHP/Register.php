@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-require_once('../../config/db_connect.php');
+require_once('../config/db_connect.php');
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $email = "";
@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
-                header("location: ../Page_Login/Login.php");
+                header("location: Login.php");
             } else{
                 echo "Oops! Une erreur est survenue. Veuillez réessayer plus tard.";
             }
@@ -131,11 +131,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link rel="stylesheet" href="../../Styles.css">
+    <link rel="stylesheet" href="../Styles.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -143,8 +143,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h1>Inscription à MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="../Page_Home/Home.php">Home</a></li>
-                <li><a href="../Page_Login/Login.php">Connexion</a></li>
+                <li><a href="Home.php">Home</a></li>
+                <li><a href="Login.php">Connexion</a></li>
             </ul>
         </nav>
     </header>
@@ -171,7 +171,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <?php if(!empty($confirm_password_err)){ echo '<div class="error-message">' . $confirm_password_err . '</div>'; } ?>
                 
                 <button type="submit">S'inscrire</button>
-                <p>Vous avez déjà un compte? <a href="../Page_Login/Login.php">Connectez-vous ici</a>.</p>
+                <p>Vous avez déjà un compte? <a href="Login.php">Connectez-vous ici</a>.</p>
             </form>
         </section>
     </main>

@@ -4,12 +4,12 @@ session_start();
 
 // Check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../Page_Login/Login.php");
+    header("location: Login.php");
     exit;
 }
 
 // Include database connection
-require_once('../../config/db_connect.php');
+require_once('../config/db_connect.php');
 
 // Define variables and initialize with empty values
 $username = $_SESSION["username"];
@@ -183,9 +183,9 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link href="../../Styles.css" rel="stylesheet">
+    <link href="../Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -193,10 +193,10 @@ $conn->close();
         <h1>Mon Compte</h1>
         <nav>
             <ul>
-                <li><a href="../Page_Accueil/Accueil.php">Accueil</a></li>
-                <li><a href="../Page_Home/Home.php">Home</a></li>
-                <li><a href="../Page_Compte/Compte.php">Mon Compte</a></li>
-                <li><a href="../logout.php">Déconnexion</a></li>
+                <li><a href="Accueil.php">Accueil</a></li>
+                <li><a href="Home.php">Home</a></li>
+                <li><a href="Compte.php">Mon Compte</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>

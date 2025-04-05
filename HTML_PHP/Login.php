@@ -3,12 +3,12 @@ session_start();
 
 // Check if user is already logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    header('Location: ../Page_Accueil/Accueil.php');
+    header('Location: Accueil.php');
     exit;
 }
 
 // Include database connection
-require_once('../../config/db_connect.php');
+require_once('../config/db_connect.php');
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: ../Page_Accueil/Accueil.php");
+                            header("location: Accueil.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Nom d'utilisateur ou mot de passe invalide.";
@@ -94,9 +94,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link rel="stylesheet" href="../../Styles.css">
+    <link rel="stylesheet" href="../Styles.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../../Ressource/Logo/favicon.png">
+    <link rel="icon" type="image/png" href="../Ressource/Logo/favicon.png">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -104,9 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Connexion à MangaHeaven</h1>
         <nav>
             <ul>
-                <li><a href="../Page_Home/Home.php">Home</a></li>
-                <li><a href="../Page_Login/Login.php">Connexion</a></li>
-                <li><a href="../Page_Register/Register.php">Inscription</a></li>
+                <li><a href="Home.php">Home</a></li>
+                <li><a href="Login.php">Connexion</a></li>
+                <li><a href="Register.php">Inscription</a></li>
             </ul>
         </nav>
     </header>
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if(!empty($password_err)){ echo '<div class="error-message">' . $password_err . '</div>'; } ?>
                 
                 <button type="submit">Connexion</button>
-                <p>Vous n'avez pas de compte? <a href="../Page_Register/Register.php">Inscrivez-vous maintenant</a>.</p>
+                <p>Vous n'avez pas de compte? <a href="Register.php">Inscrivez-vous maintenant</a>.</p>
             </form>
         </section>
     </main>

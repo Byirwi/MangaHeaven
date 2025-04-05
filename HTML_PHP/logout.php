@@ -17,7 +17,7 @@ if (ini_get("session.use_cookies")) {
 // Destroy the session
 session_destroy();
 
-// Redirect to home page using a relative path
-header("location: ./Page_Home/Home.php");
+// Redirect to home page
+header("location: Home.php");
 exit;
 ?>
