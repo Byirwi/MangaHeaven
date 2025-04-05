@@ -1,91 +1,101 @@
 <?php
-// This file will convert your logo to a favicon and save it
+// Script de diagnostic et réparation pour les problèmes de favicon
 
-// Créer les dossiers s'ils n'existent pas
-$public_dir = __DIR__ . '/Public';
-$logo_dir = $public_dir . '/Logo';
+echo "<h1>Diagnostic du favicon</h1>";
+
+// Obtenir le chemin racine réel du projet
+$project_root = realpath(dirname(__DIR__));
+echo "<p>Chemin racine du projet: <code>" . htmlspecialchars($project_root) . "</code></p>";
+
+// Créer les dossiers requis si nécessaire
+$public_dir = $project_root . DIRECTORY_SEPARATOR . 'Public';
+$logo_dir = $public_dir . DIRECTORY_SEPARATOR . 'Logo';
+$images_dir = $public_dir . DIRECTORY_SEPARATOR . 'images';
 
 if (!file_exists($public_dir)) {
-    mkdir($public_dir, 0755);
-    echo "Dossier Public créé.<br>";
+    if (mkdir($public_dir, 0755)) {
+        echo "<p>✅ Dossier Public créé</p>";
+    } else {
+        echo "<p>❌ Impossible de créer le dossier Public</p>";
+    }
 }
 
 if (!file_exists($logo_dir)) {
-    mkdir($logo_dir, 0755);
-    echo "Dossier Public/Logo créé.<br>";
+    if (mkdir($logo_dir, 0755)) {
+        echo "<p>✅ Dossier Public/Logo créé</p>";
+    } else {
+        echo "<p>❌ Impossible de créer le dossier Public/Logo</p>";
+    }
 }
 
-// Définir tous les emplacements possibles du logo
+if (!file_exists($images_dir)) {
+    if (mkdir($images_dir, 0755)) {
+        echo "<p>✅ Dossier Public/images créé</p>";
+    } else {
+        echo "<p>❌ Impossible de créer le dossier Public/images</p>";
+    }
+}
+
+// Créer un favicon temporaire si aucun logo n'est trouvé
+function createTemporaryLogo($path) {
+    // Créer une image simple de 100x100 pixels avec "MH" comme texte
+    $img = imagecreatetruecolor(100, 100);
+    $bg = imagecolorallocate($img, 40, 40, 40);
+    $text_color = imagecolorallocate($img, 255, 100, 100);
+    
+    // Remplir l'arrière-plan
+    imagefilledrectangle($img, 0, 0, 99, 99, $bg);
+    
+    // Ajouter le texte "MH"
+    imagestring($img, 5, 35, 40, "MH", $text_color);
+    
+    // Enregistrer l'image
+    imagepng($img, $path);
+    imagedestroy($img);
+    
+    return true;
+}
+
+// Vérifier l'existence du logo et en créer un temporaire si nécessaire
+$logo_found = false;
 $possible_logo_paths = [
-    __DIR__ . '/Public/Logo/logo_MangaHeaven.png',
+    $project_root . DIRECTORY_SEPARATOR . 'Public' . DIRECTORY_SEPARATOR . 'Logo' . DIRECTORY_SEPARATOR . 'logo_MangaHeaven.png',
+    $project_root . DIRECTORY_SEPARATOR . 'Public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo_MangaHeaven.png',
+    $project_root . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo_MangaHeaven.png',
+    $project_root . DIRECTORY_SEPARATOR . 'Ressource' . DIRECTORY_SEPARATOR . 'Logo' . DIRECTORY_SEPARATOR . 'logo_MangaHeaven.png',
 ];
 
-// Rechercher le logo dans tous les emplacements possibles
-$logo_path = null;
+echo "<h2>Recherche du logo</h2>";
+echo "<ul>";
+
 foreach ($possible_logo_paths as $path) {
     if (file_exists($path)) {
+        echo "<li>✅ Logo trouvé à: <code>" . htmlspecialchars($path) . "</code></li>";
+        $logo_found = true;
         $logo_path = $path;
-        echo "Logo trouvé à: $path<br>";
         break;
-    }
-}
-
-// Définir les chemins de destination
-$favicon_png = __DIR__ . '/Public/Logo/favicon.png';
-$favicon_ico = __DIR__ . '/Public/Logo/favicon.ico';
-
-// Si le logo n'est trouvé dans aucun emplacement
-if ($logo_path === null) {
-    echo "<h2>Logo introuvable</h2>";
-    echo "<p>Le logo n'a pas été trouvé. J'ai cherché aux emplacements suivants:</p>";
-    echo "<ul>";
-    foreach ($possible_logo_paths as $path) {
-        echo "<li>" . htmlspecialchars($path) . "</li>";
-    }
-    echo "</ul>";
-    echo "<p>Veuillez placer le fichier <code>logo_MangaHeaven.png</code> dans l'un des dossiers ci-dessus.</p>";
-    echo "<p>Vous pouvez également téléverser votre logo maintenant:</p>";
-    
-    // Formulaire simple pour téléverser un logo
-    echo "<form action='' method='post' enctype='multipart/form-data'>";
-    echo "<input type='file' name='logo_file' accept='image/png'>";
-    echo "<input type='submit' name='submit' value='Téléverser le logo'>";
-    echo "</form>";
-    
-    // Traitement du téléversement du logo
-    if (isset($_POST['submit'])) {
-        if (isset($_FILES['logo_file']) && $_FILES['logo_file']['error'] === UPLOAD_ERR_OK) {
-            $tmp_name = $_FILES['logo_file']['tmp_name'];
-            $name = $_FILES['logo_file']['name'];
-            
-            // Vérifier que c'est bien un fichier PNG
-            $image_info = getimagesize($tmp_name);
-            if ($image_info[2] === IMAGETYPE_PNG) {
-                // Créer le dossier de destination si nécessaire
-                if (!file_exists($logo_dir)) {
-                    mkdir($logo_dir, 0755, true);
-                }
-                
-                // Déplacer le fichier vers le dossier Public/Logo
-                $logo_path = $logo_dir . '/logo_MangaHeaven.png';
-                if (move_uploaded_file($tmp_name, $logo_path)) {
-                    echo "<p>Logo téléversé avec succès!</p>";
-                    // Continuer le script (pas de die())
-                } else {
-                    die("Erreur lors du déplacement du fichier téléversé.");
-                }
-            } else {
-                die("Le fichier doit être au format PNG.");
-            }
-        } else {
-            die("Erreur lors du téléversement: " . $_FILES['logo_file']['error']);
-        }
     } else {
-        die();
+        echo "<li>❌ Logo non trouvé à: <code>" . htmlspecialchars($path) . "</code></li>";
     }
 }
 
-// Create the favicon.png (resized version of logo)
+echo "</ul>";
+
+if (!$logo_found) {
+    echo "<p>⚠️ Aucun logo trouvé. Création d'un logo temporaire...</p>";
+    $logo_path = $logo_dir . DIRECTORY_SEPARATOR . 'logo_MangaHeaven.png';
+    if (createTemporaryLogo($logo_path)) {
+        echo "<p>✅ Logo temporaire créé à: <code>" . htmlspecialchars($logo_path) . "</code></p>";
+    } else {
+        echo "<p>❌ Impossible de créer un logo temporaire</p>";
+        die("Impossible de continuer sans logo.");
+    }
+}
+
+// Générer le favicon à partir du logo
+$favicon_png = $logo_dir . DIRECTORY_SEPARATOR . 'favicon.png';
+$favicon_ico = $logo_dir . DIRECTORY_SEPARATOR . 'favicon.ico';
+
 try {
     if (extension_loaded('gd')) {
         // Load the original image
@@ -141,6 +151,42 @@ try {
 } catch (Exception $e) {
     echo "Erreur lors de la création du favicon : " . $e->getMessage();
 }
+
+// Vérifier les liens dans les fichiers PHP
+echo "<h2>Vérification des liens HTML</h2>";
+
+$php_files = [
+    $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Home.php',
+    $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Accueil.php',
+    $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Compte.php',
+    $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Login.php',
+    $project_root . DIRECTORY_SEPARATOR . 'HTML_PHP' . DIRECTORY_SEPARATOR . 'Register.php'
+];
+
+$correct_favicon_link = '<link rel="icon" type="image/png" href="../Public/Logo/favicon.png?v=<?php echo time(); ?>">';
+
+foreach ($php_files as $file) {
+    if (file_exists($file)) {
+        $content = file_get_contents($file);
+        if (strpos($content, '../Public/Logo/favicon.png') !== false) {
+            echo "<p>✅ Lien correct dans " . basename($file) . "</p>";
+        } else {
+            echo "<p>❌ Lien incorrect dans " . basename($file) . " - sera mis à jour</p>";
+            $content = preg_replace('/<link rel="icon".*>/', $correct_favicon_link, $content);
+            file_put_contents($file, $content);
+            echo "<p>✅ Lien mis à jour dans " . basename($file) . "</p>";
+        }
+    } else {
+        echo "<p>❌ Fichier non trouvé: " . basename($file) . "</p>";
+    }
+}
+
+echo "<h2>Vérification de la structure de dossiers</h2>";
+echo "<ul>";
+echo "<li>Structure actuelle choisie: Option 1 - <strong>Favicons séparés des images de contenu</strong></li>";
+echo "<li>✓ Favicons: <code>Public/Logo/favicon.png</code></li>";
+echo "<li>✓ Images de contenu: <code>Public/images/</code> (mangas, héros, etc.)</li>";
+echo "</ul>";
 
 echo "<p>Si votre favicon ne s'affiche toujours pas, essayez de vider le cache de votre navigateur ou de forcer l'actualisation avec Ctrl+F5.</p>";
 echo "<p><a href='HTML_PHP/Home.php'>Retour à la page d'accueil</a></p>";
