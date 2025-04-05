@@ -156,6 +156,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <ul>
                 <li><a href="Home.php">Home</a></li>
                 <li><a href="Login.php">Connexion</a></li>
+                <!-- Bouton de bascule du thème -->
+                <li>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
+                        <span class="icon-moon">🌙</span>
+                        <span class="icon-sun">☀️</span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -183,7 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <?php if(!empty($confirm_password_err)){ echo '<div class="error-message">' . $confirm_password_err . '</div>'; } ?>
                 
                 <button type="submit">S'inscrire</button>
-                <p>Vous avez déjà un compte? <a href="Login.php">Connectez-vous ici</a>.</p>
+                <p>Vous avez déjà un compte? <a href="Login.php">Connectez-vous ici</a></p>
             </form>
         </section>
     </main>
@@ -192,5 +199,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <footer>
         <p>&copy; 2025 Manga-Heaven. Tous droits réservés.</p>
     </footer>
+    
+    <!-- Scripts JavaScript -->
+    <script src="../JavaScript/Theme.js"></script>
+    <script>
+        // Initialiser le bouton de thème
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            
+            themeToggle.addEventListener('click', function() {
+                // Utiliser le ThemeManager pour basculer entre les thèmes
+                window.themeManager.toggleTheme();
+            });
+        });
+    </script>
 </body>
 </html>

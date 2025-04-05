@@ -10,16 +10,18 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e4e2de; /* Fond principal du site */
-    transition: background-color 0.5s;
+    background-color: var(--bg-color); /* Fond principal du site */
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Style de l'en-tête de page */
 header {
-    background-color: #333; /* Couleur de fond sombre pour le header */
-    color: white;
+    background-color: var(--header-footer-bg); /* Couleur de fond sombre pour le header */
+    color: var(--hero-text);
     padding: 10px 0;
     text-align: center;
+    transition: background-color 0.4s ease;
 }
 
 header h1 {
@@ -75,15 +77,16 @@ main {
 
 /* Style des cartes individuelles de manga */
 .manga-item {
-    background-color: #f5f4f2; /* Légèrement plus clair que le fond principal */
+    background-color: var(--bg-card); /* Légèrement plus clair que le fond principal */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Ombre légère pour effet de profondeur */
+    box-shadow: 0 3px 10px var(--shadow-color); /* Ombre légère pour effet de profondeur */
     max-width: 250px; /* Largeur maximale des cartes */
     height: 300px; /* Hauteur fixe pour uniformité */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Style des images de manga */
@@ -109,9 +112,10 @@ main {
     max-width: 400px;
     margin: 0 auto; /* Centrage horizontal */
     padding: 20px;
-    background-color: #f5f4f2; /* Cohérent avec les autres éléments */
+    background-color: var(--bg-card); /* Cohérent avec les autres éléments */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Style du formulaire de connexion */
@@ -130,22 +134,81 @@ main {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
 }
 
 /* Style des boutons du formulaire */
 .login-form button {
     padding: 10px;
-    background-color: #333;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     border-radius: 5px;
     cursor: pointer; /* Curseur en forme de main au survol */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Animation au survol des boutons */
 .login-form button:hover {
-    background-color: #555; /* Plus clair au survol */
+    background-color: var(--button-hover); /* Plus clair au survol */
+    transform: translateY(-2px);
+}
+
+/* Style des liens dans les formulaires */
+.login-form p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.login-form a {
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-form a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.login-form a:hover {
+    color: var(--button-bg);
+}
+
+.login-form a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.dark-theme .login-form a {
+    color: var(--secondary-accent);
+}
+
+.dark-theme .login-form a::after {
+    background-color: var(--secondary-accent);
+}
+
+.dark-theme .login-form a:hover {
+    color: var(--button-hover);
 }
 
 /* ------------------------------------------------------
@@ -153,14 +216,15 @@ main {
    ------------------------------------------------------ */
 /* Style du pied de page */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--header-footer-bg);
+    color: var(--hero-text);
     text-align: center;
     padding: 10px 0;
     position: fixed; /* Fixe en bas de l'écran */
     bottom: 0;
     width: 100%;
     z-index: 100; /* Assure que le footer reste au-dessus des autres éléments */
+    transition: background-color 0.4s ease;
 }
 
 /* ------------------------------------------------------
@@ -172,10 +236,11 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 40px 20px;
-    background-color: #333; /* Fond sombre pour contraster avec le contenu */
-    color: white;
+    background-color: var(--hero-bg); /* Fond sombre pour contraster avec le contenu */
+    color: var(--hero-text);
     border-radius: 8px;
     margin-bottom: 30px;
+    transition: background-color 0.4s ease;
 }
 
 /* Style du contenu textuel de la section hero */
@@ -241,26 +306,28 @@ footer {
 
 /* Style du bouton CTA primaire (le plus important) */
 .cta-button.primary {
-    background-color: #ff6b6b; /* Rouge vif pour attirer l'attention */
-    color: white;
+    background-color: var(--cta-primary-bg); /* Rouge vif pour attirer l'attention */
+    color: var(--button-text);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Animation du bouton primaire au survol */
 .cta-button.primary:hover {
-    background-color: #ff5252; /* Plus foncé au survol */
+    background-color: var(--cta-primary-hover); /* Plus foncé au survol */
     transform: translateY(-2px); /* Léger effet de flottement */
 }
 
 /* Style du bouton CTA secondaire */
 .cta-button.secondary {
     background-color: transparent;
-    color: white;
-    border: 2px solid white;
+    color: var(--hero-text);
+    border: 2px solid var(--cta-secondary-border);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Animation du bouton secondaire au survol */
 .cta-button.secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--cta-secondary-hover);
     transform: translateY(-2px);
 }
 
@@ -277,13 +344,13 @@ footer {
 
 /* Style des cartes de fonctionnalités */
 .feature-item {
-    background-color: #f5f4f2;
+    background-color: var(--bg-card);
     border-radius: 8px;
     padding: 25px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px var(--shadow-color);
     flex: 1; /* Distribution égale de l'espace */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Animation des cartes de fonctionnalités au survol */
@@ -350,9 +417,10 @@ footer {
     max-width: 600px;
     margin: 0 auto 80px auto; /* Marge en bas pour le footer */
     padding: 25px;
-    background-color: #f5f4f2;
+    background-color: var(--bg-card);
     border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Style des formulaires de mise à jour dans le compte */
@@ -387,14 +455,16 @@ footer {
     padding: 12px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
     font-size: 1em;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 /* Style des champs de saisie au focus */
 .update-form input:focus {
-    border-color: #555;
+    border-color: var(--accent-color);
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
 }
@@ -402,8 +472,8 @@ footer {
 /* Style des boutons dans les formulaires de mise à jour */
 .update-form button {
     padding: 12px;
-    background-color: #333;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -414,8 +484,133 @@ footer {
 
 /* Animation des boutons au survol */
 .update-form button:hover {
-    background-color: #555;
+    background-color: var(--button-hover);
     transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------
+   STYLES DU THÈME ET DU BOUTON DE BASCULE
+   ------------------------------------------------------ */
+/* Variables de couleurs pour le thème clair (défaut) */
+:root {
+    --bg-color: #f8f9fa;
+    --bg-card: #ffffff;
+    --header-footer-bg: #4a55a2;
+    --text-color: #333333;
+    --accent-color: #7895cb;
+    --secondary-accent: #a0c3d9;
+    --form-bg: #ffffff;
+    --form-border: #e0e0e0;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --button-bg: #4a55a2;
+    --button-hover: #5d6fc7;
+    --button-text: #ffffff;
+    --hero-bg: #4a55a2;
+    --hero-text: #ffffff;
+    --cta-primary-bg: #ff6b6b;
+    --cta-primary-hover: #ff5252;
+    --cta-secondary-border: #ffffff;
+    --cta-secondary-hover: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --toggle-hover: rgba(0, 0, 0, 0.1);
+}
+
+/* Variables de couleurs pour le thème sombre */
+.dark-theme {
+    --bg-color: #1a1a2e;
+    --bg-card: #252a41;
+    --header-footer-bg: #16213e;
+    --text-color: #e6e6e6;
+    --accent-color: #6366f1;
+    --secondary-accent: #818cf8;
+    --form-bg: #252a41;
+    --form-border: #323860;
+    --input-bg: #2d325a;
+    --input-border: #3e4178;
+    --button-bg: #6366f1;
+    --button-hover: #818cf8;
+    --button-text: #ffffff;
+    --hero-bg: #16213e;
+    --hero-text: #ffffff;
+    --cta-primary-bg: #6366f1;
+    --cta-primary-hover: #818cf8;
+    --cta-secondary-border: #e6e6e6;
+    --cta-secondary-hover: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --toggle-hover: rgba(255, 255, 255, 0.1);
+}
+
+/* Style du bouton de bascule de thème */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background-color: var(--toggle-hover);
+    transform: rotate(10deg);
+}
+
+.theme-toggle .icon-moon,
+.theme-toggle .icon-sun {
+    position: absolute;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.theme-toggle .icon-moon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.theme-toggle .icon-sun {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.dark-theme .theme-toggle .icon-moon {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.dark-theme .theme-toggle .icon-sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Style spécifique pour le thème sombre */
+.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-theme header {
+    background-color: var(--header-footer-bg);
+}
+
+.dark-theme .manga-item, 
+.dark-theme .feature-item, 
+.dark-theme .login-section,
+.dark-theme .account-section {
+    background-color: var(--bg-card);
+    color: var(--text-color);
+}
+
+.dark-theme footer {
+    background-color: var(--header-footer-bg);
 }
 
 /* ------------------------------------------------------
