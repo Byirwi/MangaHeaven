@@ -1,6 +1,9 @@
 <?php
 // Initialize the session
 session_start();
+
+// Debug session state - remove this in production
+// echo '<pre>'; print_r($_SESSION); echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +23,7 @@ session_start();
 <body>
     <!-- En-tête de la page -->
     <header>
-        <h1>Home</h1>
+        <h1>MangaHeaven</h1>
         <nav>
             <ul>
                 <?php
@@ -47,12 +50,13 @@ session_start();
                 <p>Découvrez, lisez et suivez vos mangas préférés en ligne.</p>
                 <div class="cta-buttons">
                     <?php
-                    // If user is logged in, show multiple navigation options, otherwise show login/register
+                    // Ensure session is available and check if user is logged in
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        // User is logged in, show navigation options
                         echo '<a href="../Page_Accueil/Accueil.php" class="cta-button primary">Explorer les mangas</a>';
                         echo '<a href="../Page_Compte/Compte.php" class="cta-button secondary">Mon compte</a>';
-                        // Add more buttons as needed for other important sections
                     } else {
+                        // User is not logged in, show login/register options
                         echo '<a href="../Page_Login/Login.php" class="cta-button primary">Explorer les mangas</a>';
                         echo '<a href="../Page_Register/Register.php" class="cta-button secondary">S\'inscrire</a>';
                     }
