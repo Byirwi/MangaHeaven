@@ -13,7 +13,7 @@ session_start();
     <title>MangaHeaven</title>
     <link href="../CSS/Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png?v=<?php echo time(); ?>">
     <!-- Force favicon refresh with this meta tag -->
     <meta name="theme-color" content="#222222">
     

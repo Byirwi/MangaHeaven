@@ -135,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>MangaHeaven</title>
     <link rel="stylesheet" href="../CSS/Styles.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png?v=<?php echo time(); ?>">
 </head>
 <body>
     <!-- En-tête de la page -->

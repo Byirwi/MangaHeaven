@@ -17,7 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <title>MangaHeaven</title>
     <link href="../CSS/Styles.css" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../Public/images/favicon.png">
+    <link rel="icon" type="image/png" href="../Public/images/favicon.png?v=<?php echo time(); ?>">
 </head>
 <body>
     <!-- En-tête de la page -->
