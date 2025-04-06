@@ -18,7 +18,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>MangaHeaven</title>
-    <link href="../CSS/Styles.css" rel="stylesheet">
+    <link href="../CSS/style.css" rel="stylesheet">
     <!-- Favicon et métadonnées d'optimisation mobile -->
     <link rel="icon" type="image/png" href="../Public/Logo/favicon.png">
     <meta name="theme-color" content="#222222">

@@ -1,0 +1,188 @@
+/* ==========================================================================
+   FORMULAIRES - MangaHeaven
+   ========================================================================== */
+
+/* ------------------------------------------------------
+   SECTIONS DE CONNEXION/INSCRIPTION
+   ------------------------------------------------------ */
+/* Style de la section de connexion/inscription */
+.login-section {
+    max-width: 400px;
+    margin: 0 auto; /* Centrage horizontal */
+    padding: 20px;
+    background-color: var(--bg-card); /* Cohérent avec les autres éléments */
+    border-radius: 5px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Style du formulaire de connexion */
+.login-form {
+    display: flex;
+    flex-direction: column; /* Empilement vertical des éléments */
+}
+
+/* Style des étiquettes du formulaire */
+.login-form label {
+    margin: 10px 0 5px;
+}
+
+/* Style des champs de saisie */
+.login-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Style des boutons du formulaire */
+.login-form button {
+    padding: 12px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px; /* Arrondi légèrement plus prononcé */
+    cursor: pointer;
+    font-weight: 600; /* Police légèrement plus grasse */
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden; /* Pour l'effet d'ondulation */
+}
+
+/* Animation au survol des boutons */
+.login-form button:hover {
+    background-color: var(--button-hover); /* Plus clair au survol */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form button:active {
+    background-color: var(--button-active);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des liens dans les formulaires */
+.login-form p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.login-form a {
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-form a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.login-form a:hover {
+    color: var(--button-bg);
+}
+
+.login-form a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.dark-theme .login-form a {
+    color: var(--secondary-accent);
+}
+
+.dark-theme .login-form a::after {
+    background-color: var(--secondary-accent);
+}
+
+.dark-theme .login-form a:hover {
+    color: var(--button-hover);
+}
+
+/* ------------------------------------------------------
+   FORMULAIRES DE MISE À JOUR DU COMPTE
+   ------------------------------------------------------ */
+/* Style des formulaires de mise à jour dans le compte */
+.update-form {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--input-border);
+}
+
+/* Style des titres dans les formulaires de mise à jour */
+.update-form h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+/* Structure des formulaires de mise à jour */
+.update-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style des étiquettes dans les formulaires de mise à jour */
+.update-form label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+/* Style des champs de saisie dans les formulaires de mise à jour */
+.update-form input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Style des champs de saisie au focus */
+.update-form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Style des boutons dans les formulaires de mise à jour */
+.update-form button {
+    padding: 12px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Animation des boutons au survol */
+.update-form button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}

@@ -1,0 +1,111 @@
+/* ==========================================================================
+   VARIABLES & THÈMES - MangaHeaven
+   ========================================================================== */
+
+/* Variables de couleurs pour le thème clair "Aurore Atlantique" - AMÉLIORÉ */
+:root {
+    /* Palette de base */
+    --bg-color: #EBF5FB;  /* Bleu très pâle légèrement plus dynamique */
+    --bg-secondary: #D6EAF8;  /* Bleu pâle secondaire */
+    --bg-card: #FFFFFF;  /* Blanc pur pour les cartes */
+    --text-color: #2C3E50;  /* Bleu foncé pour le texte */
+    
+    /* Couleurs d'accentuation */
+    --accent-color: #3498DB;  /* Bleu ciel principal */
+    --secondary-accent: #5DADE2;  /* Bleu ciel secondaire */
+    --tertiary-accent: #85C1E9;  /* Bleu ciel tertiaire pour effets subtils */
+    
+    /* Formulaires */
+    --form-bg: #FFFFFF;  /* Fond blanc pour formulaires */
+    --form-border: #D6EAF8;  /* Bordure légère */
+    --input-bg: #F8FBFD;  /* Fond légèrement teinté pour inputs */
+    --input-border: #AED6F1;  /* Bleu clair pour bordures d'input */
+    --input-focus-border: #3498DB;  /* Bordure accentuée au focus */
+    
+    /* Boutons et actions */
+    --button-bg: #3498DB;  /* Bleu vif pour boutons principaux */
+    --button-hover: #2E86C1;  /* Bleu plus foncé au survol */
+    --button-active: #2874A6;  /* Bleu encore plus foncé au clic */
+    --button-text: #FFFFFF;  /* Texte blanc pour contraste */
+    
+    /* Sections spéciales */
+    --hero-bg: linear-gradient(135deg, #2E86C1, #3498DB);  /* Dégradé pour hero section */
+    --hero-text: #FFFFFF;  /* Texte blanc sur fond hero */
+    --cta-primary-bg: #F39C12;  /* Orange doré pour CTA principal */
+    --cta-primary-hover: #E67E22;  /* Orange plus foncé au survol */
+    --cta-primary-active: #D35400;  /* Orange encore plus foncé au clic */
+    --cta-secondary-border: #FFFFFF;  /* Bordure blanche */
+    --cta-secondary-hover: rgba(52, 152, 219, 0.15);  /* Bleu transparent au survol */
+    
+    /* Effets visuels */
+    --shadow-color: rgba(44, 62, 80, 0.08);  /* Ombre subtile */
+    --shadow-hover: rgba(44, 62, 80, 0.15);  /* Ombre plus prononcée au survol */
+    --toggle-hover: rgba(52, 152, 219, 0.1);  /* Effet hover cohérent */
+    
+    /* Header et footer */
+    --header-footer-bg: linear-gradient(to right, #2E86C1, #3498DB);  /* Dégradé élégant */
+}
+
+/* Variables de couleurs pour le thème sombre "Abysses Mystiques" - INCHANGÉ */
+.dark-theme {
+    --bg-color: #1A202C;  /* Fond principal: bleu nuit */
+    --bg-secondary: #171923;  /* Fond secondaire */
+    --bg-card: #2D3748;  /* Fond des cartes */
+    --text-color: #E2E8F0;  /* Texte clair */
+    --accent-color: #38B2AC;  /* Cyan lumineux (couleur principale) */
+    --secondary-accent: #38B2AC;  /* Cyan lumineux */
+    --form-bg: #2D3748;  /* Fond des cartes */
+    --form-border: #38B2AC;  /* Cyan lumineux */
+    --input-bg: #1A202C;  /* Fond principal */
+    --input-border: #38B2AC;  /* Cyan lumineux */
+    --button-bg: #38B2AC;  /* Cyan lumineux (couleur principale) */
+    --button-hover: #4FD1C5;  /* Cyan plus clair au survol */
+    --button-text: #E2E8F0;  /* Texte clair */
+    --hero-bg: #2D3748;  /* Fond des cartes */
+    --hero-text: #E2E8F0;  /* Texte clair */
+    --cta-primary-bg: #805AD5;  /* Violet mystique (couleur d'accent) */
+    --cta-primary-hover: #6B46C1;  /* Violet plus foncé au survol */
+    --cta-secondary-border: #E2E8F0;  /* Texte clair */
+    --cta-secondary-hover: rgba(56, 178, 172, 0.2);  /* Cyan transparent */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --toggle-hover: rgba(255, 255, 255, 0.1);
+    --header-footer-bg: #16213e;  /* Préservation de la couleur originale */
+}
+
+/* Style spécifique pour le thème sombre */
+.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-theme header {
+    background-color: var(--header-footer-bg);
+}
+
+.dark-theme .manga-item, 
+.dark-theme .feature-item, 
+.dark-theme .login-section,
+.dark-theme .account-section {
+    background-color: var(--bg-card);
+    color: var(--text-color);
+}
+
+.dark-theme footer {
+    background-color: var(--header-footer-bg);
+}
+
+.dark-theme .success-message {
+    background-color: rgba(40, 167, 69, 0.15);
+    border-left-color: #28a745;
+    color: #7ee08b;
+}
+
+.dark-theme .error-message {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #ff6b6b;
+}
+
+/* Pour assurer cohérence sur tous les appareils */
+.dark-theme .landing-hero {
+    background-color: var(--hero-bg);
+}

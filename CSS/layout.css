@@ -1,0 +1,133 @@
+/* ==========================================================================
+   MISE EN PAGE - MangaHeaven
+   ========================================================================== */
+
+/* ------------------------------------------------------
+   SECTION LISTE DES MANGAS
+   ------------------------------------------------------ */
+/* Style de la section de liste des mangas */
+.manga-list {
+    margin-bottom: 20px;
+}
+
+/* Style de la barre de recherche */
+#search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Style du conteneur des cartes de manga */
+.manga-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+    gap: 20px; /* Espace uniforme entre les cartes */
+    justify-content: space-around;
+}
+
+/* ------------------------------------------------------
+   PAGE D'ACCUEIL - SECTION HERO
+   ------------------------------------------------------ */
+/* Style de la section principale de la page d'accueil */
+.landing-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: var(--hero-bg); /* Fond sombre pour contraster avec le contenu */
+    color: var(--hero-text);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    transition: background-color 0.4s ease;
+}
+
+/* Style du contenu textuel de la section hero */
+.hero-content {
+    flex: 1;
+    padding: 0 30px;
+}
+
+/* Style du titre principal de la section hero */
+.hero-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+/* Style du paragraphe de la section hero */
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Style du conteneur d'image de la section hero */
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* Style de l'image dans la section hero */
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Style du conteneur des boutons CTA */
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Centrage des boutons */
+    width: 100%;
+}
+
+/* Style spécifique pour le conteneur CTA dans la section hero */
+.landing-hero .cta-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ------------------------------------------------------
+   SECTION DES FONCTIONNALITÉS
+   ------------------------------------------------------ */
+/* Style du conteneur des fonctionnalités */
+.features {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* ------------------------------------------------------
+   SECTION DES TENDANCES
+   ------------------------------------------------------ */
+/* Style de la section des tendances */
+.trending {
+    margin-bottom: 60px; /* Espace en bas pour éviter le chevauchement avec le footer */
+}
+
+/* Style du titre de la section des tendances */
+.trending h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* ------------------------------------------------------
+   SECTION DU COMPTE UTILISATEUR
+   ------------------------------------------------------ */
+/* Style de la section du compte utilisateur */
+.account-section {
+    max-width: 600px;
+    margin: 0 auto 80px auto; /* Marge en bas pour le footer */
+    padding: 25px;
+    background-color: var(--bg-card);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}

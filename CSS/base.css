@@ -1,0 +1,84 @@
+/* ==========================================================================
+   STYLES DE BASE - MangaHeaven
+   ========================================================================== */
+
+/* Style global du corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color); /* Fond principal du site */
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Style de l'en-tête de page */
+header {
+    background: var(--header-footer-bg); /* Utilisation du dégradé */
+    color: var(--hero-text);
+    padding: 12px 0;
+    text-align: center;
+    transition: background 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+header h1 {
+    margin: 0; /* Supprime les marges par défaut du titre */
+}
+
+/* Style de la navigation principale */
+nav ul {
+    list-style: none; /* Supprime les puces de liste */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Alignement horizontal des éléments de menu */
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* Supprime le soulignement des liens */
+}
+
+/* Style du conteneur principal */
+main {
+    padding: 20px;
+    padding-bottom: 100px; /* Espace important en bas pour éviter le chevauchement avec le footer */
+}
+
+/* Style du pied de page */
+footer {
+    background: var(--header-footer-bg); /* Utilisation du dégradé */
+    color: var(--hero-text);
+    text-align: center;
+    padding: 12px 0;
+    position: fixed; /* Fixe en bas de l'écran */
+    bottom: 0;
+    width: 100%;
+    z-index: 100; /* Assure que le footer reste au-dessus des autres éléments */
+    transition: background 0.4s ease;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* Ombre légère inversée */
+}
+
+/* Style des messages d'erreur */
+.error-message {
+    color: #dc3545; /* Rouge pour les erreurs */
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: rgba(220, 53, 69, 0.1); /* Fond rouge transparent */
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Style des messages de succès */
+.success-message {
+    color: #28a745; /* Vert pour les succès */
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: #e8f5e9; /* Fond vert clair */
+    border-radius: 5px;
+    border-left: 4px solid #28a745; /* Barre verticale pour accentuation */
+    font-weight: bold;
+}

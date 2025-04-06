@@ -1,0 +1,583 @@
+/* ==========================================================================
+   STYLES RESPONSIFS - MangaHeaven
+   ========================================================================== */
+
+/* ------------------------------------------------------
+   TABLETTES (≤ 768px)
+   ------------------------------------------------------ */
+@media (max-width: 768px) {
+    /* Ajustement de la section de compte pour tablettes */
+    .account-section {
+        max-width: 90%;
+        padding: 15px;
+    }
+    
+    /* Ajustements généraux pour les espaces */
+    main {
+        padding: 10px;
+        margin-bottom: 80px; /* Plus d'espace en bas sur mobile */
+        padding-bottom: 50px;
+    }
+    
+    /* Réduction de la taille du titre principal */
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    /* Ajustement de la navigation pour écrans plus petits */
+    nav {
+        width: 100%;
+        overflow-x: auto; /* Permet de scroller horizontalement */
+        -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
+        padding: 5px 0;
+    }
+    
+    /* Adaptation de la liste de navigation */
+    nav ul {
+        display: flex;
+        flex-wrap: nowrap; /* Empêche le retour à la ligne */
+        white-space: nowrap;
+        justify-content: flex-start;
+        padding: 0 10px;
+    }
+    
+    /* Réduction des marges des éléments de menu */
+    nav ul li {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+    
+    /* Ajustement de la grille de mangas */
+    .manga-container {
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    /* Redimensionnement des cartes de manga */
+    .manga-item {
+        width: calc(50% - 10px);
+        height: 250px;
+        width: 45%;
+        max-width: 140px;
+        min-width: 120px;
+        height: auto;
+        aspect-ratio: 0.7/1; /* Ratio hauteur/largeur fixe */
+        margin-bottom: 15px;
+    }
+    
+    /* Réduction de la taille des titres de manga */
+    .manga-item h3 {
+        font-size: 1em;
+    }
+    
+    /* Ajustement des formulaires */
+    .login-section, .account-section {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: 10px auto 60px auto;
+    }
+    
+    /* Réduction du padding des champs de formulaire */
+    .login-form input, .update-form input {
+        padding: 8px;
+    }
+    
+    /* Adaptation du hero pour petits écrans */
+    .landing-hero {
+        flex-direction: column; /* Empilement vertical des éléments */
+        padding: 20px 10px;
+        gap: 20px;
+        margin-bottom: 20px;
+        background-color: var(--hero-bg); /* Utilisation de la variable au lieu de #1a1a1a */
+        border-radius: 0;
+        margin: -10px -10px 20px -10px; /* Étend jusqu'aux bords */
+        padding: 30px 15px;
+        gap: 25px;
+    }
+    
+    /* Ajustement du contenu du hero */
+    .hero-content {
+        padding: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        order: 1; /* Change l'ordre pour mettre le texte après l'image */
+        width: 100%;
+    }
+    
+    /* Réduction de la taille du titre du hero */
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+    
+    /* Réduction de la taille du texte du hero */
+    .hero-content p {
+        font-size: 1em;
+    }
+    
+    /* Empilement vertical des boutons */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Ajustement de l'image du hero */
+    .hero-image {
+        width: 100%;
+        order: 0; /* Affiche l'image en premier */
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    /* Limitation de la hauteur de l'image du hero */
+    .hero-image img {
+        max-height: 180px;
+        object-fit: contain;
+    }
+    
+    /* Adaptation de la section des fonctionnalités */
+    .features {
+        flex-direction: column; /* Empilement vertical */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Ajustement des cartes de fonctionnalités */
+    .feature-item {
+        margin-bottom: 15px;
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+    
+    /* Style des icônes de fonctionnalités sur mobile */
+    .feature-icon {
+        font-size: 2em;
+        background-color: var(--bg-secondary); /* Utiliser la variable de fond secondaire */
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        border-radius: 50%; /* Forme circulaire */
+        margin: 0 auto 15px;
+    }
+    
+    /* Désactivation du footer fixe sur mobile */
+    footer {
+        position: static; /* Position normale dans le flux */
+        padding: 15px 0;
+    }
+    
+    /* Optimisation du hero pour mobile */
+    .landing-hero {
+        background-color: var(--hero-bg); /* Utiliser la variable au lieu d'une couleur codée en dur */
+        border-radius: 0;
+        margin: -10px -10px 20px -10px; /* Étend jusqu'aux bords */
+        padding: 30px 15px;
+        gap: 25px;
+    }
+    
+    /* Ajustement de l'image hero pour mobile */
+    .hero-image {
+        width: 85%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    /* Optimisation de l'affichage de l'image sur mobile */
+    .hero-image img {
+        max-height: none;
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Ajustement du titre hero sur mobile */
+    .hero-content h2 {
+        margin-top: 10px;
+        margin-bottom: 12px;
+        font-size: 1.7em;
+        line-height: 1.3;
+    }
+    
+    /* Ajustement du texte hero sur mobile */
+    .hero-content p {
+        margin-bottom: 20px;
+        font-size: 1em;
+        opacity: 0.9;
+    }
+    
+    /* Optimisation des boutons CTA pour mobile */
+    .cta-buttons {
+        width: 85%;
+        margin: 0 auto;
+        gap: 12px;
+    }
+    
+    /* Style des boutons CTA sur mobile */
+    .cta-button {
+        padding: 14px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-size: 0.95em;
+    }
+    
+    /* Ajustement du bouton primaire sur mobile */
+    .cta-button.primary {
+        background-color: var(--cta-primary-bg);
+        box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+    }
+
+    .dark-theme .cta-button.primary {
+        box-shadow: 0 4px 10px rgba(128, 90, 213, 0.3); /* Ombre du violet mystique */
+    }
+    
+    /* Ajustement de la section des tendances sur mobile */
+    .trending {
+        margin-top: 30px;
+        margin-bottom: 70px; /* Plus d'espace en bas */
+    }
+    
+    /* Optimisation de la grille de mangas sur mobile */
+    .manga-container {
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    /* Amélioration des cartes de manga sur mobile */
+    .manga-item {
+        width: 45%;
+        max-width: 150px;
+        height: 210px;
+        aspect-ratio: auto;
+        margin-bottom: 10px;
+        transition: transform 0.3s;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    
+    /* Animation au toucher pour mobile */
+    .manga-item:active {
+        transform: scale(0.96); /* Léger retrait */
+    }
+    
+    /* Optimisation des images de manga sur mobile */
+    .manga-item img {
+        height: 80%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+    
+    /* Style des titres de manga sur mobile */
+    .manga-item h3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-card);
+        opacity: 0.9;
+        margin: 0;
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+    
+    /* Amélioration de la section des fonctionnalités sur mobile */
+    .features {
+        margin: 10px 5px 30px;
+    }
+    
+    /* Optimisation des cartes de fonctionnalités sur mobile */
+    .feature-item {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    
+    /* Amélioration du header sur mobile */
+    header {
+        padding: 12px 0;
+        position: sticky; /* Reste visible lors du défilement */
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* Optimisation de la navigation scrollable */
+    nav {
+        padding: 8px 0;
+        margin-top: 5px;
+        scrollbar-width: none; /* Masque la barre de défilement sur Firefox */
+    }
+    
+    /* Masquer la barre de défilement sur les autres navigateurs */
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Style des liens de navigation sur mobile */
+    nav ul li a {
+        padding: 8px 12px;
+        display: inline-block;
+        border-radius: 20px;
+        transition: background-color 0.2s;
+    }
+    
+    /* Retour visuel au toucher des liens */
+    nav ul li a:active {
+        background-color: rgba(255,255,255,0.2);
+    }
+    
+    /* Amélioration de l'expérience de formulaire sur mobile */
+    .login-form input, .update-form input {
+        padding: 14px 12px;
+        font-size: 16px; /* Évite le zoom automatique sur iOS */
+        margin-bottom: 15px;
+    }
+    
+    /* Agrandissement des boutons pour faciliter le toucher */
+    .login-form button, .update-form button {
+        padding: 14px;
+        margin-top: 5px;
+        font-size: 16px;
+        height: 50px;
+    }
+    
+    /* Optimisation des cartes de manga pour le toucher */
+    .manga-item {
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        margin-bottom: 20px;
+    }
+    
+    /* Amélioration de l'affichage des images sur mobile */
+    .manga-item img {
+        height: 170px;
+        object-position: top;
+    }
+    
+    /* Ajustement optimisé de l'affichage des mangas */
+    .manga-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+        justify-content: center;
+        padding: 0 5px;
+    }
+    
+    /* Ajustement des espaces sur mobile */
+    main {
+        margin-bottom: 90px; /* Plus d'espace pour le footer */
+    }
+    
+    /* Espacement des sections */
+    section:not(.landing-hero) {
+        margin-bottom: 40px;
+        padding: 0 5px;
+    }
+    
+    /* Ajustement des titres de section */
+    h2 {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+    
+    /* Centrage amélioré des boutons CTA sur mobile */
+    .landing-hero .cta-buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        gap: 12px;
+        padding: 0 15px;
+    }
+    
+    /* Limitation de la largeur des boutons pour meilleur contrôle */
+    .cta-button {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+    
+    /* Style optimisé des boutons CTA dans le hero */
+    .landing-hero .cta-button {
+        width: 90%;
+        max-width: 260px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* ------------------------------------------------------
+   PETITS TÉLÉPHONES (≤ 480px)
+   ------------------------------------------------------ */
+@media (max-width: 480px) {
+    /* Réduction de la taille du titre principal */
+    header h1 {
+        font-size: 1.3em;
+    }
+    
+    /* Adaptation de la navigation sur très petits écrans */
+    nav ul {
+        display: flex;
+        flex-wrap: wrap; /* Permet le retour à la ligne */
+        justify-content: center;
+    }
+    
+    /* Réduction des marges pour les éléments de menu */
+    nav ul li {
+        margin: 5px;
+    }
+    
+    /* Ajustement des dimensions des cartes de manga */
+    .manga-item {
+        width: 100%;
+        height: 220px;
+        width: 90%;
+        max-width: 160px;
+        height: auto;
+    }
+    
+    /* Adaptation des images pour les petits écrans */
+    .manga-item img {
+        height: auto;
+        max-height: 150px;
+    }
+    
+    /* Réduction de la taille du titre hero */
+    .hero-content h2 {
+        font-size: 1.5em;
+        font-size: 1.4em;
+        margin-top: 0;
+    }
+    
+    /* Réduction de la taille du texte hero */
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    
+    /* Amélioration de la lisibilité des formulaires */
+    label, input, button {
+        font-size: 0.95em;
+    }
+    
+    /* Optimisation des boutons sur petits écrans */
+    .cta-buttons {
+        width: 100%;
+    }
+    
+    /* Pleine largeur pour les boutons */
+    .cta-button {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    /* Réduction générale de la taille du texte */
+    body {
+        font-size: 15px;
+    }
+    
+    /* Optimisation des marges de navigation */
+    nav ul {
+        padding: 0 5px;
+    }
+    
+    /* Réduction des marges entre éléments de menu */
+    nav ul li {
+        margin: 0 3px;
+    }
+    
+    /* Grille optimisée pour très petits écrans */
+    .manga-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes seulement */
+        gap: 12px;
+    }
+    
+    /* Ajustement des cartes de manga */
+    .manga-item {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        margin-bottom: 0;
+    }
+    
+    /* Optimisation des formulaires sur très petits écrans */
+    .login-section, .account-section {
+        padding: 15px 12px;
+        margin: 10px auto 70px; /* Plus d'espace en bas */
+    }
+    
+    /* Taille minimale des boutons pour toucher facile */
+    button, .cta-button {
+        min-height: 44px; /* Taille recommandée par Apple */
+    }
+    
+    /* Réduction de la taille du texte du footer */
+    footer {
+        font-size: 0.9em;
+    }
+    
+    /* Optimisation des boutons CTA */
+    .cta-button {
+        width: 100%;
+        padding: 12px 10px;
+        min-height: 44px;
+    }
+    
+    /* Centrage parfait sur très petits écrans */
+    .landing-hero .cta-buttons {
+        width: 100%;
+        padding: 0;
+    }
+    
+    /* Ajustement des boutons dans le hero */
+    .landing-hero .cta-button {
+        width: 90%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+}
+
+/* ------------------------------------------------------
+   OPTIMISATIONS MODALES ET ÉLÉMENTS UI
+   ------------------------------------------------------ */
+/* Adaptation des modales pour mobile */
+@media (max-width: 480px) {
+    /* Optimisation de la taille des modales */
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* Empêche le zoom sur les formulaires iOS */
+    input, textarea, select, button {
+        font-size: 16px !important;
+    }
+    
+    /* Prévention des problèmes de dépassement */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+    }
+}
+
+/* ------------------------------------------------------
+   OPTIMISATIONS POUR GRANDS ÉCRANS
+   ------------------------------------------------------ */
+/* Ajustement des boutons pour écrans larges */
+@media (min-width: 769px) {
+    /* Disposition horizontale des boutons sur grands écrans */
+    .landing-hero .cta-buttons {
+        flex-direction: row;
+    }
+    
+    /* Largeur minimale des boutons */
+    .cta-button {
+        min-width: 180px;
+        text-align: center;
+    }
+}
