@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark-theme">
 <head>
     <!-- Métadonnées et lien vers le fichier CSS -->
     <meta charset="UTF-8">
