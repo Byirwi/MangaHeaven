@@ -166,23 +166,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <p>&copy; 2025 Manga-Heaven. Tous droits réservés.</p>
     </footer>
-    
-    <!-- Scripts JavaScript -->
-    <script src="../JavaScript/Theme.js"></script>
-    <script>
-        // Initialiser le bouton de thème
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('themeToggle');
-            
-            themeToggle.addEventListener('click', function() {
-                // Utiliser le ThemeManager pour basculer entre les thèmes
-                window.themeManager.toggleTheme();
-            });
-            
-            // Force une mise à jour initiale des icônes
-            const initialTheme = window.themeManager.getPreferredTheme();
-            window.themeManager.updateThemeIcons(initialTheme);
-        });
-    </script>
 </body>
 </html>

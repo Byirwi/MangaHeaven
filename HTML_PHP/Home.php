@@ -41,7 +41,13 @@ session_start();
                     <li><a href="Login.php">Connexion</a></li>
                     <li><a href="Register.php">Inscription</a></li>
                 <?php endif; ?>
-                <!-- Bouton de bascule du thème retiré de la navigation -->
+                <!-- Ajout du bouton de bascule du thème dans la navigation -->
+                <li>
+                    <button id="headerThemeToggle" class="theme-toggle" aria-label="Changer de thème">
+                        <span class="icon-moon"></span>
+                        <span class="icon-sun"></span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -117,42 +123,5 @@ session_start();
     <footer>
         <p>&copy; 2025 Manga-Heaven. Tous droits réservés.</p>
     </footer>
-
-    <!-- Scripts JavaScript -->
-    <script src="../JavaScript/Theme.js"></script>
-    <script>
-        // Initialiser le bouton de thème
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('themeToggle');
-            
-            // Mise à jour de l'apparence initiale du bouton
-            updateThemeButtonAppearance();
-            
-            themeToggle.addEventListener('click', function() {
-                // Utiliser le ThemeManager pour basculer entre les thèmes
-                window.themeManager.toggleTheme();
-                
-                // Mettre à jour l'apparence du bouton après changement
-                updateThemeButtonAppearance();
-            });
-            
-            // Fonction pour mettre à jour l'apparence du bouton selon le thème
-            function updateThemeButtonAppearance() {
-                const isDarkTheme = document.documentElement.classList.contains('dark-theme');
-                const modeText = document.querySelector('#themeToggle h3');
-                
-                if (isDarkTheme) {
-                    modeText.textContent = 'Mode jour';
-                } else {
-                    modeText.textContent = 'Mode nuit';
-                }
-            }
-            
-            // Écouter les changements de thème pour mettre à jour l'apparence
-            document.addEventListener('themeChanged', function(e) {
-                updateThemeButtonAppearance();
-            });
-        });
-    </script>
 </body>
 </html>
