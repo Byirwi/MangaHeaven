@@ -17,7 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" class="dark-theme">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -82,5 +82,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <footer>
         <p>&copy; 2025 Lecture de Manga en Ligne. Tous droits réservés.</p>
     </footer>
+    
+    <!-- Scripts JavaScript -->
+    <script src="../JavaScript/Theme.js"></script>
+    <script>
+        // Initialiser le bouton de thème
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            
+            // Vérifier l'état initial du thème
+            const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+            
+            themeToggle.addEventListener('click', function() {
+                // Utiliser le ThemeManager pour basculer entre les thèmes
+                window.themeManager.toggleTheme();
+            });
+            
+            // Écouter les changements de thème
+            document.addEventListener('themeChanged', function(e) {
+                // Le thème a changé, pas besoin de code supplémentaire car le CSS gère l'affichage
+            });
+        });
+    </script>
 </body>
 </html>

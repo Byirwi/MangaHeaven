@@ -13,7 +13,7 @@ session_start();
 // echo '<pre>'; print_r($_SESSION); echo '</pre>';
 ?>
 <!DOCTYPE html>
-<html lang="fr" class="dark-theme">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
@@ -123,5 +123,59 @@ session_start();
     <footer>
         <p>&copy; 2025 Manga-Heaven. Tous droits réservés.</p>
     </footer>
+
+    <!-- Scripts JavaScript -->
+    <script src="../JavaScript/Theme.js"></script>
+    <script>
+        // Initialiser les boutons de thème
+        document.addEventListener('DOMContentLoaded', function() {
+            // Référence aux deux boutons de thème (header et feature)
+            const themeToggleFeature = document.getElementById('themeToggle');
+            const headerThemeToggle = document.getElementById('headerThemeToggle');
+            
+            // Mise à jour de l'apparence initiale des boutons
+            updateThemeButtonAppearance();
+            
+            // Force une mise à jour initiale des icônes avec le thème actuel
+            const initialTheme = window.themeManager.getPreferredTheme();
+            window.themeManager.updateThemeIcons(initialTheme);
+            
+            // Écouter les clics sur le bouton de thème feature
+            themeToggleFeature.addEventListener('click', function() {
+                toggleTheme();
+            });
+            
+            // Écouter les clics sur le bouton de thème header
+            headerThemeToggle.addEventListener('click', function() {
+                toggleTheme();
+            });
+            
+            // Fonction pour basculer le thème
+            function toggleTheme() {
+                // Utiliser le ThemeManager pour basculer entre les thèmes
+                window.themeManager.toggleTheme();
+                
+                // Mettre à jour l'apparence du bouton après changement
+                updateThemeButtonAppearance();
+            }
+            
+            // Fonction pour mettre à jour l'apparence du bouton selon le thème
+            function updateThemeButtonAppearance() {
+                const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const modeText = document.querySelector('#themeToggle h3');
+                
+                if (isDarkTheme) {
+                    modeText.textContent = 'Mode jour';
+                } else {
+                    modeText.textContent = 'Mode nuit';
+                }
+            }
+            
+            // Écouter les changements de thème pour mettre à jour l'apparence
+            document.addEventListener('themeChanged', function(e) {
+                updateThemeButtonAppearance();
+            });
+        });
+    </script>
 </body>
 </html>
